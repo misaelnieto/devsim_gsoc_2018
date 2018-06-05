@@ -1,6 +1,7 @@
 from constants import *
 from enum import Enum
 
+
 class Metals(Enum):
     generic = 1
     Aluminum = 2
@@ -20,11 +21,11 @@ class Silicon(object):
         "n_i": 1e10,
         "T": T,
         "kT": k * T,
-        "V_t": k*T/q,
+        "V_t": k * T / q,
         # mu_n and mu_p are specific for Silicon
         "mu_n": 400,
         "mu_p": 200,
-        #default SRH parameters
+        # default SRH parameters
         "n1": 1e10,
         "p1": 1e10,
         "taun": 1e-5,

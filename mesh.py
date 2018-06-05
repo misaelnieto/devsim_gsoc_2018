@@ -5,6 +5,7 @@ Mesh objects and routines
 import uuid
 import enum
 
+
 class Mesh(object):
     """
     The Mesh is the base of the simulation. As of now, only 1d meshes are
@@ -16,7 +17,7 @@ class Mesh(object):
     """
 
     def __init__(self, name=None):
-        self.name = name or 'mesh-%s'%str(uuid.uuid4())[:8]
+        self.name = name or 'mesh-%s' % str(uuid.uuid4())[:8]
         create_1d_mesh(mesh=self.name)
         self._contacts = []
         self._regions = []
@@ -67,11 +68,12 @@ class Mesh(object):
             tag1='top', tag2='bottom'
         )
         """
-        _mat = isinstance(material, enum.Enum) and material() or material
-        else:
+        # Use the material class name as material name parameter to add_1d_region?
+        _mat = isinstance(material, enum.Enum) and material.__name__ or material.__class__.__name__
         add_1d_region(
             mesh=self.name, _mat, region, tag1, tag2
         )
+        # Maybe add name, material as tuple?
         self._regions.append(name)
 
     def finalize(self):

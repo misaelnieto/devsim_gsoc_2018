@@ -1,0 +1,2139 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get",
+				"__get_attr__"
+			],
+			[
+				"dev",
+				"DevSim"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"max",
+				"max_download_count\tstatement"
+			],
+			[
+				"download",
+				"download_count\tstatement"
+			],
+			[
+				"max_d",
+				"max_download_count"
+			],
+			[
+				"downloa",
+				"download_count"
+			],
+			[
+				"LFS",
+				"LFS_DOWNLOADS_DOWNLOAD_LIMIT\tmodule"
+			],
+			[
+				"su",
+				"SUBMITTED\tstatement"
+			],
+			[
+				"mode",
+				"models\tmodule"
+			],
+			[
+				"assert",
+				"assertEqual"
+			],
+			[
+				"bcc",
+				"bcc\tparam"
+			],
+			[
+				"paypa",
+				"paypal_obj\tstatement"
+			],
+			[
+				"payment",
+				"payment_status"
+			],
+			[
+				"proof",
+				"proof_of_payment\tparam"
+			],
+			[
+				"clear",
+				"clear_payment"
+			],
+			[
+				"content",
+				"content_type"
+			],
+			[
+				"Digit",
+				"DigitalProductOrder\tclass"
+			],
+			[
+				"attach",
+				"attach_alternative\tfunction"
+			],
+			[
+				"recipie",
+				"recipient_list\tparam"
+			],
+			[
+				"Digital",
+				"DigitalProductOrder"
+			],
+			[
+				"model",
+				"Model"
+			],
+			[
+				"assertForm",
+				"assertFormNoError"
+			],
+			[
+				"produ",
+				"product_price\tstatement"
+			],
+			[
+				"min",
+				"min_price\tstatement"
+			],
+			[
+				"user_",
+				"user_pwd\tstatement"
+			],
+			[
+				"pd",
+				"pdb\tpyth-n-pdb"
+			],
+			[
+				"lfsd_order",
+				"lfsd_order_paid\tinstance"
+			],
+			[
+				"assertE",
+				"assertEquals"
+			],
+			[
+				"digi",
+				"digital_assets\tfunction"
+			],
+			[
+				"paymen",
+				"payment_method"
+			],
+			[
+				"Payment",
+				"PaymentMethod"
+			],
+			[
+				"pay",
+				"payment_method"
+			],
+			[
+				"pa",
+				"payment_method"
+			],
+			[
+				"req",
+				"requests"
+			],
+			[
+				"reques",
+				"request_factory"
+			],
+			[
+				"LFSD",
+				"LFSD_BuyProcess_TestCase\tclass"
+			],
+			[
+				"Test",
+				"TestCase\tclass"
+			],
+			[
+				"US",
+				"user"
+			],
+			[
+				"SESS",
+				"session\tstatement"
+			],
+			[
+				"assertIs",
+				"assertIsInstance\tfunction"
+			],
+			[
+				"product",
+				"product-2"
+			],
+			[
+				"DigitalPro",
+				"DigitalProductPurchaseOrder\tclass"
+			],
+			[
+				"digital",
+				"digitalproduct"
+			],
+			[
+				"tmp",
+				"tmp_dir"
+			],
+			[
+				"se",
+				"settings\tfunction"
+			],
+			[
+				"stipped",
+				"stippled_underline"
+			],
+			[
+				"r",
+				"return_value\tstatement"
+			],
+			[
+				"f",
+				"file"
+			],
+			[
+				"assere",
+				"assertEquals\tstatement"
+			],
+			[
+				"sendfi",
+				"sendfile"
+			],
+			[
+				"sendf",
+				"sendfile"
+			],
+			[
+				"set",
+				"settings\tinstance"
+			],
+			[
+				"assertEq",
+				"assertEquals\tstatement"
+			],
+			[
+				"temp",
+				"temp_file_name\tstatement"
+			],
+			[
+				"pro",
+				"product_id"
+			],
+			[
+				"Downl",
+				"DownloadLimitations"
+			],
+			[
+				"time",
+				"time_scale_choices"
+			],
+			[
+				"as",
+				"as_choices\tfunction"
+			],
+			[
+				"Downloa",
+				"DownloadLimitations\tclass"
+			],
+			[
+				"class",
+				"classmethod\tclass"
+			],
+			[
+				"Downlo",
+				"DownloadLimitation\tclass"
+			],
+			[
+				"downlo",
+				"download_count\tparam"
+			],
+			[
+				"Da",
+				"DateTimeField\tclass"
+			],
+			[
+				"LFS_",
+				"LFS_DOWNLOADS_DEFAULT_EXPIRY\tmodule"
+			],
+			[
+				"On",
+				"OneToOneRel\tclass"
+			],
+			[
+				"has",
+				"has_digiproducts\tstatement"
+			],
+			[
+				"fld",
+				"fld_expir"
+			],
+			[
+				"fld_",
+				"fld_count"
+			],
+			[
+				"list",
+				"listo\tstatement"
+			],
+			[
+				"url",
+				"urlpatterns"
+			],
+			[
+				"bower",
+				"bower_conf"
+			],
+			[
+				"upload",
+				"UploadStates"
+			],
+			[
+				"uploa",
+				"uploadedBytes"
+			],
+			[
+				"Arr",
+				"arrayContains"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"uplo",
+				"upload_id"
+			],
+			[
+				"done",
+				"doneCallback"
+			],
+			[
+				"form",
+				"_formData"
+			],
+			[
+				"file",
+				"fileToResume"
+			],
+			[
+				"File",
+				"FileUploadBinding"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"value",
+				"valueAccessor"
+			],
+			[
+				"FileUplo",
+				"FileUploadBinding"
+			],
+			[
+				"Foo",
+				"FooBinding"
+			],
+			[
+				"prodc",
+				"product_id"
+			],
+			[
+				"csr",
+				"csrf_token"
+			],
+			[
+				"JSON",
+				"JSONResponse"
+			],
+			[
+				"progresal",
+				"progressall_cb"
+			],
+			[
+				"resu",
+				"resume"
+			],
+			[
+				"chunkd",
+				"chunkdone_cb"
+			],
+			[
+				"chun",
+				"chunkdone_cb"
+			],
+			[
+				"add",
+				"add_cb"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"rm",
+				"removeClass"
+			],
+			[
+				"progr",
+				"progress-meter"
+			],
+			[
+				"prod",
+				"product"
+			],
+			[
+				"Fule",
+				"FileUploadCompleteView"
+			],
+			[
+				"ssx",
+				"ssx-1"
+			],
+			[
+				"Host",
+				"HostName"
+			],
+			[
+				"uploadde",
+				"uploaded_file"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"remove",
+				"removeClass"
+			],
+			[
+				"remo",
+				"removeClass"
+			],
+			[
+				"country",
+				"country_list"
+			],
+			[
+				"Countr",
+				"country"
+			],
+			[
+				"Country",
+				"CountrySelectorForm"
+			],
+			[
+				"order",
+				"order_state"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"insta",
+				"installed〔variable〕"
+			],
+			[
+				"Model",
+				"ModelChoiceField"
+			],
+			[
+				"fulfil",
+				"fulfill_and_deliver"
+			],
+			[
+				"Donat",
+				"DonationAddForm"
+			],
+			[
+				"templa",
+				"template"
+			],
+			[
+				"Pay",
+				"PayPalPDT"
+			],
+			[
+				"payp",
+				"paypal_obj"
+			],
+			[
+				"dona",
+				"donation"
+			],
+			[
+				"Paypa",
+				"PayPalIPN"
+			],
+			[
+				"paypal",
+				"paypal_pdt"
+			],
+			[
+				"ema",
+				"PAYPAL_RECEIVER_EMAIL"
+			],
+			[
+				"PAYP",
+				"PAYPAL_RECEIVER_EMAIL"
+			],
+			[
+				"Dum",
+				"DummyPayPalPDT"
+			],
+			[
+				"_",
+				"_postback"
+			],
+			[
+				"mo",
+				"Model"
+			],
+			[
+				"deliv",
+				"delivery"
+			],
+			[
+				"ful",
+				"fulfill_and_deliver"
+			],
+			[
+				"d_a",
+				"d_asset"
+			],
+			[
+				"deli",
+				"delivery"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "solar_cell.py",
+			"settings":
+			{
+				"buffer_size": 1556,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diode_common.py",
+			"settings":
+			{
+				"buffer_size": 6153,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "python_packages/model_create.py",
+			"settings":
+			{
+				"buffer_size": 6542,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mesh.py",
+			"settings":
+			{
+				"buffer_size": 2387,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "device.py",
+			"settings":
+			{
+				"buffer_size": 2468,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "simple_physics.py",
+			"settings":
+			{
+				"buffer_size": 14292,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/14-Performance-vs-doping-s-sustrate/step-04.in",
+			"settings":
+			{
+				"buffer_size": 837,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/14-Performance-vs-doping-s-sustrate/step-05.in",
+			"settings":
+			{
+				"buffer_size": 740,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/20-Performance-vs--doping+xj+sustrate_type-2nd-trial/step-02.in",
+			"settings":
+			{
+				"buffer_size": 1545,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "materials.py",
+			"settings":
+			{
+				"buffer_size": 1555,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Discover Packages"
+			],
+			[
+				"list pa",
+				"Package Control: List Packages"
+			],
+			[
+				"list",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"prefere",
+				"Preferences: Settings"
+			],
+			[
+				"sspytho",
+				"Set Syntax: Python"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"ss php",
+				"Set Syntax: PHP"
+			],
+			[
+				"sspos",
+				"Set Syntax: SQL (PostgreSQL)"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ssmd",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"sssql",
+				"Set Syntax: SQL"
+			],
+			[
+				"ssql",
+				"Set Syntax: SQL"
+			],
+			[
+				"traili",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"ssq",
+				"Set Syntax: SQL"
+			],
+			[
+				"doc",
+				"Anaconda: Display object docs"
+			],
+			[
+				"anaconda do",
+				"Anaconda: Display object docs"
+			],
+			[
+				"trail",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"tra",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"trai",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"next",
+				"Anaconda: Next lint error"
+			],
+			[
+				"tr",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"train",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"autofor",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"anaconda sh",
+				"Anaconda: Show error list"
+			],
+			[
+				"package control",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"package control u",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"anaconda",
+				"Anaconda: Next lint error"
+			],
+			[
+				"anaconda lint",
+				"Anaconda: Next lint error"
+			],
+			[
+				"trailin",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"anaco",
+				"Package Control: Discover Packages"
+			],
+			[
+				"markdow",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"markdown",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"markdo",
+				"Set Syntax: Markdown"
+			],
+			[
+				"emmet",
+				"Emmet: Rename Tag"
+			],
+			[
+				"anaconda li",
+				"Anaconda: Next lint error"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"ssstra",
+				"Set Syntax: Strace"
+			],
+			[
+				"sstrace",
+				"Set Syntax: Strace"
+			],
+			[
+				"ssstrace",
+				"Set Syntax: Strace"
+			],
+			[
+				"ssbash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"ssbas",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"sssh",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"ssjso",
+				"Set Syntax: JSON"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"lint this",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"package Control",
+				"Package Control: List Packages"
+			],
+			[
+				"rmove",
+				"Package Control: Remove Package"
+			],
+			[
+				"boxy",
+				"Boxy Theme: Configuration"
+			],
+			[
+				"package control in",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"package control: sa",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"set syntax restr",
+				"Set Syntax: reStructuredText"
+			],
+			[
+				"ssjsc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JSON"
+			],
+			[
+				"ssssh",
+				"Set Syntax: SSH Config"
+			],
+			[
+				"ssc",
+				"Set Syntax: C"
+			],
+			[
+				"sshtl",
+				"Set Syntax: HTML (Tcl)"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ssini",
+				"Set Syntax: NAnt Build File"
+			],
+			[
+				"ssin",
+				"Set Syntax: INI"
+			],
+			[
+				"ssdjan",
+				"Set Syntax: HTML (Django)"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"SSINI",
+				"Set Syntax: INI"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"snippet html",
+				"Snippet: html"
+			],
+			[
+				"snippet",
+				"Snippet: html"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"list ",
+				"Package Control: List Packages"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"low",
+				"Convert Case: Lower Case"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"codeinte",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"codeintel",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pagace",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"Package Control: lis",
+				"Package Control: List Packages"
+			],
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 587.0
+	},
+	"console":
+	{
+		"height": 132.0,
+		"history":
+		[
+			"import socket; socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect('/home/nnieto/.local/share/anaconda/run/hkl_lfs/anaconda.sock')",
+			"import socket; socket.socket((socket.AF_INET, socket.SOCK_STREAM)).connect('/home/nnieto/.local/share/anaconda/run/hkl_lfs/anaconda.sock')",
+			"import socket; socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect('/home/nnieto/.local/share/anaconda/run/hkl_lfs/anaconda.sock')",
+			"cls",
+			"clear()",
+			"clear",
+			"import socket; socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect(\"/home/nnieto/.local/share/anaconda/run/hkl_lfs/anaconda.sock\")",
+			"import socket; socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect(/home/nnieto/.local/share/anaconda/run/hkl_lfs/anaconda.sock)",
+			"restart",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/nnieto/DevSim/devsim_gsoc_2018",
+		"/home/nnieto/DevSim/devsim_gsoc_2018/python_packages"
+	],
+	"file_history":
+	[
+		"/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/15-Performance-vs-doping-n-sustrate/step-05.in",
+		"/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/15-Performance-vs-doping-n-sustrate/step-04.in",
+		"/home/nnieto/DevSim/devsim_gsoc_2018/diode_common.py",
+		"/home/nnieto/DevSim/devsim_gsoc_2018/simple_physics.py",
+		"/home/nnieto/DevSim/devsim_gsoc_2018/devsim_gsoc.sublime-project",
+		"/home/nnieto/DevSim/solar/diode_common.py",
+		"/home/nnieto/DevSim/devsim/external/symdiff/scripts/setup_fedora_27.sh",
+		"/home/nnieto/DevSim/symdiff/linux_x86_64_debug/Makefile",
+		"/home/nnieto/DevSim/devsim/scripts/build_fedora_27.sh",
+		"/home/nnieto/DevSim/devsim/external/symdiff/src/engine/CMakeLists.txt",
+		"/home/nnieto/DevSim/devsim/scripts/build_centos_6.sh",
+		"/home/nnieto/DevSim/devsim/scripts/build_osx.sh",
+		"/home/nnieto/DevSim/devsim/external/symdiff/scripts/setup_ubuntu_14.04.sh",
+		"/home/nnieto/DevSim/devsim/scripts/setup_fedora_27.sh",
+		"/home/nnieto/DevSim/devsim/external/superlu_osx_10.10.sh",
+		"/home/nnieto/DevSim/symdiff/scripts/setup_fedora_27.sh",
+		"/home/nnieto/DevSim/devsim/external/symdiff/scripts/setup_centos_6.sh",
+		"/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/02-Simple-SC-DOE/solar_experiment.in",
+		"/home/nnieto/Code/PU.org/cracks/sbxuklnt.php",
+		"/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/02-Simple-SC-DOE/run.sh",
+		"/home/nnieto/Apps/Silvaco/examples/solar/solarex01_3.set",
+		"/home/nnieto/Apps/Silvaco/examples/solar/solarex01.in",
+		"/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/Silvaco-Solar-Cells.sublime-project",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/docs/Migracion 28 Julio 2017.md",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/templates/lfs_downloads/library.html",
+		"/home/nnieto/ponencia.txt",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_theme/templates/lfs_downloads/library.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/settings.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/tests/test_process.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/tests/base.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/settings_devel.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/views/users.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/settings.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_monkeypatch/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/buildout.cfg",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/urls.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/docs/Migracion 6-Abr-2018.md",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/devel.cfg",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/views/security.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/settings_ext.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/templates/lfs_downloads/mail/order_delivered.txt",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/mail.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/admin.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/templates/hkl_donations/mail/user_delivery_ready.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/mail.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/templates/lfs_downloads/mail/order_delivered.html",
+		"/home/nnieto/Code/NoeNieto/www.noenieto.com/css/render.css",
+		"/home/nnieto/Code/NoeNieto/www.noenieto.com/uploadme.sh",
+		"/home/nnieto/Code/NoeNieto/www.noenieto.com/README.md",
+		"/home/nnieto/Code/NoeNieto/www.noenieto.com/index.html",
+		"/home/nnieto/Code/NoeNieto/www.noenieto.com/robots.txt",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/misc/custom_eggs/lfs-carousel-1.0.tar.gz",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/core/mail/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/core/mail/message.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/payment/listeners.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/views/paywall.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/settings_teste.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/tests/test_sendfile.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/tests/test_models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/test/utils.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/paypal/standard/ipn/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/paypal/standard/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/paypal/standard/ipn/urls.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/paypal/standard/ipn/views.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/views/paydude.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/paypal/standard/pdt/views.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/templates/lfs_downloads/paypal_form.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/urls.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/foo.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/foo.h",
+		"/home/nnieto/Code/NoeNieto/demos.noenieto.com/README.md",
+		"/home/nnieto/Code/NoeNieto/demos.noenieto.com/index.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/test/testcases.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_theme/templates/lfs/mail/mail_base.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/contrib/auth/forms.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_theme/templates/registration/password_reset_email.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/fabfile.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_theme/urls.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_monkeypatch/email.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_monkeypatch/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_theme/templates/registration/password_reset_form.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/contrib/auth/views.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/paypal/pro/tests.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/templates/hkl_donations/paypal_form.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/catalog/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/urls.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/templates/lfs_downloads/paywall.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/templates/hkl_donations/please_donate.html",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/http/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/views/generic/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/views/generic/edit.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/views/generic/detail.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/views/generic/base.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/forms/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/forms/forms.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/db/models/manager.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/db/models/query.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/payment/utils.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/forms/fields.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/order/settings.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/catalog/settings.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/signals.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/views/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/order/tests.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/payment/settings.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/core/urlresolvers.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/forms.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/order/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/order/utils.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/hkl_lfs.sublime-project",
+		"/home/nnieto/.config/sublime-text-3/Packages/Anaconda/README.md",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/core/signals.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/payment/models.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/cart/tests.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/payment/tests.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/customer/utils.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs/tests/utils.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/db/models/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/db/models/base.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/storage.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/django/core/files/storage.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/views/__init__.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/lfs_project/hkl_donations/views/manage.py",
+		"/home/nnieto/Code/HolokinesisLibros/hkl_lfs/parts/omelette/lfs_downloads/tests/__init__.py"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"device",
+			"region",
+			"=device",
+			"printNode",
+			"printNodeValues",
+			"print_node_values",
+			"\"",
+			"region",
+			"device",
+			"CreateNodeModel",
+			"def node_model",
+			"node_model",
+			"SetSiliconParameters"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "solar_cell.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								928,
+								928
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 16.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "diode_common.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4549,
+								4549
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1103.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "python_packages/model_create.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6542,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								859,
+								859
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "mesh.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2387,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2200,
+								2200
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 156.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "device.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								331,
+								331
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "simple_physics.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14292,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								982,
+								982
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/14-Performance-vs-doping-s-sustrate/step-04.in",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 837,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								786,
+								786
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/User/Silvaco.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/14-Performance-vs-doping-s-sustrate/step-05.in",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								740,
+								740
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/User/Silvaco.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/nnieto/Code/Maestria-UABC/Silvaco_Solar_Cells/20-Performance-vs--doping+xj+sustrate_type-2nd-trial/step-02.in",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1545,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1434,
+								1434
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/User/Silvaco.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 79.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "materials.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								854,
+								854
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "devsim_gsoc.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"scriptsbuildfe",
+				"scripts/build_fedora_27.sh"
+			],
+			[
+				"setupfedor",
+				"scripts/setup_fedora_27.sh"
+			],
+			[
+				"scripts/setup_fedora_27.sh",
+				"scripts/setup_fedora_27.sh"
+			],
+			[
+				"solarex01_3.set",
+				"Solar Cell Examples/solarex01_3.set"
+			],
+			[
+				"migraciu",
+				"buildout/docs/Migracion 28 Julio 2017.md"
+			],
+			[
+				"lfs_downloadsmodels",
+				"pythonpath/lfs_downloads/models.py"
+			],
+			[
+				"lfs_downloadslibrar",
+				"lfs_project/hkl_theme/templates/lfs_downloads/library.html"
+			],
+			[
+				"lfs_downloads_librar",
+				"pythonpath/lfs_downloads/templates/lfs_downloads/library.html"
+			],
+			[
+				"lfsdownloadslibrary",
+				"pythonpath/lfs_downloads/templates/lfs_downloads/library.html"
+			],
+			[
+				"lfs_downloadsettings",
+				"pythonpath/lfs_downloads/settings.py"
+			],
+			[
+				"settings",
+				"lfs_project/settings.py"
+			],
+			[
+				"lfs_dmodels",
+				"pythonpath/lfs_downloads/models.py"
+			],
+			[
+				"urls",
+				"lfs_project/urls.py"
+			],
+			[
+				"lfsdownloadsviewsus",
+				"pythonpath/lfs_downloads/views/users.py"
+			],
+			[
+				"build",
+				"buildout/buildout.cfg"
+			],
+			[
+				"lfs_projcturl",
+				"lfs_project/urls.py"
+			],
+			[
+				"settingsde",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"buildou",
+				"buildout/buildout.cfg"
+			],
+			[
+				"dev",
+				"buildout/devel.cfg"
+			],
+			[
+				"lfsdownlomodels",
+				"pythonpath/lfs_downloads/models.py"
+			],
+			[
+				".cfg",
+				"buildout/buildout.cfg"
+			],
+			[
+				"devel.",
+				"buildout/devel.cfg"
+			],
+			[
+				"settings_deve",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"devel",
+				"buildout/devel.cfg"
+			],
+			[
+				"lfsdownloadsmodels",
+				"pythonpath/lfs_downloads/models.py"
+			],
+			[
+				"lfsdownloadsviews",
+				"pythonpath/lfs_downloads/views/security.py"
+			],
+			[
+				"lfs_downloadsadmin",
+				"pythonpath/lfs_downloads/admin.py"
+			],
+			[
+				"lfs",
+				"buildout/misc/custom_eggs/lfs-carousel-1.0.tar.gz"
+			],
+			[
+				"settingstes",
+				"lfs_project/settings_teste.py"
+			],
+			[
+				"lfs_downloadsmodel",
+				"pythonpath/lfs_downloads/models.py"
+			],
+			[
+				"paypalstandardipnvews",
+				"pythonpath/paypal/standard/ipn/views.py"
+			],
+			[
+				"paypalurl",
+				"pythonpath/paypal/standard/ipn/urls.py"
+			],
+			[
+				"lfspaymentliste",
+				"pythonpath/lfs/payment/listeners.py"
+			],
+			[
+				"lfs_projecturls",
+				"lfs_project/urls.py"
+			],
+			[
+				"hkl_donationsmodel",
+				"lfs_project/hkl_donations/models.py"
+			],
+			[
+				"lfs-",
+				"buildout/misc/custom_eggs/lfs-carousel-1.0.tar.gz"
+			],
+			[
+				"hkl_donationsur",
+				"lfs_project/hkl_donations/urls.py"
+			],
+			[
+				"lfs_projectsett",
+				"lfs_project/settings.py"
+			],
+			[
+				"lfs_projectsettings",
+				"lfs_project/settings.py"
+			],
+			[
+				"lfsmail/base",
+				"lfs_project/hkl_theme/templates/lfs/mail/mail_base.html"
+			],
+			[
+				"password_reset_em",
+				"lfs_project/hkl_theme/templates/registration/password_reset_email.html"
+			],
+			[
+				"paypaltest",
+				"pythonpath/paypal/pro/tests.py"
+			],
+			[
+				"lfs_projecturl",
+				"lfs_project/urls.py"
+			],
+			[
+				"hkldonationsmodel",
+				"lfs_project/hkl_donations/models.py"
+			],
+			[
+				"lfs_downloads/templates/pay",
+				"pythonpath/lfs_downloads/templates/lfs_downloads/paypal_form.html"
+			],
+			[
+				"test_models",
+				"pythonpath/lfs_downloads/tests/test_models.py"
+			],
+			[
+				"lfscatalogmodel",
+				"pythonpath/lfs/catalog/models.py"
+			],
+			[
+				"hkl_donationsurls",
+				"lfs_project/hkl_donations/urls.py"
+			],
+			[
+				"lfs_downloadsurls",
+				"pythonpath/lfs_downloads/urls.py"
+			],
+			[
+				"hkl_donationspaypal",
+				"lfs_project/hkl_donations/templates/hkl_donations/paypal_form.html"
+			],
+			[
+				"lfs_downloadssettings",
+				"pythonpath/lfs_downloads/settings.py"
+			],
+			[
+				"lfs_downloadssetting",
+				"pythonpath/lfs_downloads/settings.py"
+			],
+			[
+				"lfs_projectsetting",
+				"lfs_project/settings.py"
+			],
+			[
+				"hkl_donationsviews",
+				"lfs_project/hkl_donations/views/paydude.py"
+			],
+			[
+				"hkl_donationspaydud",
+				"lfs_project/hkl_donations/views/paydude.py"
+			],
+			[
+				"djangoviewsgenericbase",
+				"pythonpath/django/views/generic/base.py"
+			],
+			[
+				"djangoviewsgenericedi",
+				"pythonpath/django/views/generic/edit.py"
+			],
+			[
+				"lfsdownloadsurls",
+				"pythonpath/lfs_downloads/urls.py"
+			],
+			[
+				"lfsdonationsurls",
+				"lfs_project/hkl_donations/urls.py"
+			],
+			[
+				"lfs_downloadsurl",
+				"pythonpath/lfs_downloads/urls.py"
+			],
+			[
+				"settings.p",
+				"lfs_project/settings.py"
+			],
+			[
+				"settingsteste",
+				"lfs_project/settings_teste.py"
+			],
+			[
+				"lfs_downloadsurls.p",
+				"pythonpath/lfs_downloads/urls.py"
+			],
+			[
+				"lfs_downloadsviews",
+				"pythonpath/lfs_downloads/views/__init__.py"
+			],
+			[
+				"lfspaymentutils",
+				"pythonpath/lfs/payment/utils.py"
+			],
+			[
+				"lfsordermode",
+				"pythonpath/lfs/order/models.py"
+			],
+			[
+				"lfspaymentsettin",
+				"pythonpath/lfs/payment/settings.py"
+			],
+			[
+				"devel.cfg",
+				"buildout/devel.cfg"
+			],
+			[
+				"lfsorderutils",
+				"pythonpath/lfs/order/utils.py"
+			],
+			[
+				"lfspaymentmodels",
+				"pythonpath/lfs/payment/models.py"
+			],
+			[
+				"lfsorderutls",
+				"pythonpath/lfs/order/utils.py"
+			],
+			[
+				"lfspaymentmodel",
+				"pythonpath/lfs/payment/models.py"
+			],
+			[
+				"settingsdeve",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"devel.c",
+				"buildout/devel.cfg"
+			],
+			[
+				"lfs_downloadstest_mode",
+				"pythonpath/lfs_downloads/tests/test_models.py"
+			],
+			[
+				"donationsviewma",
+				"lfs_project/hkl_donations/views/manage.py"
+			],
+			[
+				"hkl_donationsurl",
+				"lfs_project/hkl_donations/urls.py"
+			],
+			[
+				"lfs_downloadstest_mo",
+				"pythonpath/lfs_downloads/tests/test_models.py"
+			],
+			[
+				"djangocoreurl",
+				"pythonpath/django/core/urlresolvers.py"
+			],
+			[
+				"lfscatalog",
+				"pythonpath/lfs/catalog/listeners.py"
+			],
+			[
+				"djangohttp/",
+				"pythonpath/django/http/__init__.py"
+			],
+			[
+				"djangohttp",
+				"pythonpath/django/utils/http.py"
+			],
+			[
+				"lfscoremode",
+				"pythonpath/lfs/core/models.py"
+			],
+			[
+				"settingste",
+				"lfs_project/settings_teste.py"
+			],
+			[
+				"settings_de",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"setting",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"fabfi",
+				"buildout/fabfile.py"
+			],
+			[
+				"lfs.manage.j",
+				"pythonpath/lfs/static/js/lfs.manage.js"
+			],
+			[
+				"local",
+				"lfs_project/local_settings.py"
+			],
+			[
+				"deve",
+				"buildout/devel.cfg"
+			],
+			[
+				"settings.",
+				"lfs_project/settings.py"
+			],
+			[
+				"fabfile",
+				"buildout/fabfile.py"
+			],
+			[
+				"buildout",
+				"buildout/buildout.cfg"
+			],
+			[
+				"admindeliver",
+				"lfs_project/hkl_donations/templates/hkl_donations/mail/admin_delivery_paid.html"
+			],
+			[
+				"deliverrea",
+				"lfs_project/hkl_donations/templates/hkl_donations/mail/user_delivery_ready.html"
+			],
+			[
+				"paydude",
+				"lfs_project/hkl_donations/views/paydude.py"
+			],
+			[
+				"sett",
+				"lfs_project/settings.py"
+			],
+			[
+				"maildusetup.py",
+				"~/Code/HolokinesisLibros/hkl_lfs/src/collective.recipe.maildump/setup.py"
+			],
+			[
+				"setup",
+				"lfs-shipping-ups/setup.py"
+			],
+			[
+				"main.css",
+				"lfs_project/hkl_theme/static/css/main.css"
+			],
+			[
+				"djangotemplatecontext",
+				"pythonpath/django/template/context.py"
+			],
+			[
+				"hkl_errata_form",
+				"lfs_project/hkl_errata/templates/hkl/hkl_errata_form.html"
+			],
+			[
+				"views",
+				"lfs_project/hkl_errata/views.py"
+			],
+			[
+				"forms",
+				"lfs_project/hkl_errata/forms.py"
+			],
+			[
+				"lfs/contact/contact_form.html",
+				"lfs_project/hkl_theme/templates/lfs/contact/contact_form.html"
+			],
+			[
+				"lfs/mail/contact_mail.html",
+				"lfs_project/hkl_theme/templates/lfs/mail/contact_mail.html"
+			],
+			[
+				"lfs_contactview",
+				"pythonpath/lfs_contact/views.py"
+			],
+			[
+				"menu.scc",
+				"lfs_project/hkl_theme_galileo/.sass-cache/84d21505bcd925c0219bfbb659acb7c48b3400c5/_menu.scssc"
+			],
+			[
+				"grun",
+				"lfs_project/hkl_theme_galileo/Gruntfile.js"
+			],
+			[
+				"pgpass",
+				"buildout/misc/pgpass.txt"
+			],
+			[
+				"",
+				"buildout/devel.cfg"
+			],
+			[
+				"fabf",
+				"buildout/fabfile.py"
+			],
+			[
+				"gruntfil",
+				"lfs_project/hkl_theme_galileo/Gruntfile.js"
+			],
+			[
+				"settings.py",
+				"lfs_project/settings.py"
+			],
+			[
+				"settings_dev",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"settings_",
+				"lfs_project/settings_devel.py"
+			],
+			[
+				"sendfile.py",
+				"pythonpath/lfs_downloads/sendfile.py"
+			],
+			[
+				"sendfile",
+				"lfs_project/hkl_donations/sendfile.py"
+			],
+			[
+				"admin_urls",
+				"lfs_project/hkl_theme/admin_urls.py"
+			],
+			[
+				"jquery-fileupload.js",
+				"pythonpath/lfs/static/jquery/jquery.fileupload-4.2.1/jquery.fileupload.js"
+			],
+			[
+				"djangoviewsgeneric",
+				"pythonpath/django/views/generic/__init__.py"
+			],
+			[
+				"viewschunk",
+				"lfs-downloads/lfs_downloads/views/chunk_uploads.py"
+			],
+			[
+				"lfs_downloads/style.css",
+				"pythonpath/lfs_downloads/static/lfs_downloads/style.css"
+			],
+			[
+				"bower_componentsjquery.fileupload-ui.js",
+				"lfs-downloads/lfs_downloads/static/lfs_downloads/bower_components/blueimp-file-upload/js/jquery.fileupload-ui.js"
+			],
+			[
+				"jquery.fileupload-4.2.1/jquery.fileupload-ui.js",
+				"pythonpath/lfs/static/jquery/jquery.fileupload-4.2.1/jquery.fileupload-ui.js"
+			],
+			[
+				"lfs_downloads/bower_components/jquery.fileupload.js",
+				"pythonpath/lfs_downloads/static/lfs_downloads/bower_components/blueimp-file-upload/js/jquery.fileupload.js"
+			],
+			[
+				"fileupload",
+				"pythonpath/lfs/static/jquery/jquery.fileupload-4.2.1/jquery.fileupload.js"
+			],
+			[
+				"chunkeduploadconsta",
+				"pythonpath/chunked_upload/constants.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Code/NoeNieto/misaelnieto.github.io/Blog-Jekyll.sublime-project"
+			],
+			[
+				"hom",
+				"/home/tzicatl/Aplicaciones/Codigo/HomeViva/homeviva_2/hv2-trunk.sublime-project"
+			],
+			[
+				"hkl",
+				"/home/tzicatl/Aplicaciones/Codigo/HolokinesisLibros/hkl_lfs/hkl_lfs.sublime-project"
+			],
+			[
+				"ho",
+				"/home/tzicatl/Aplicaciones/Codigo/HomeViva/homeviva_2/homeviva_2.sublime-project"
+			],
+			[
+				"lib",
+				"/home/tzicatl/Aplicaciones/Codigo/AlfaOmega/plone_libroweb2/libroweb.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"getProfilePicURL",
+				"getProfilePicURL"
+			]
+		],
+		"width": 418.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 320.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

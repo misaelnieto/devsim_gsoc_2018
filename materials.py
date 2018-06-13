@@ -2,8 +2,15 @@ from constants import *
 from enum import Enum
 
 
+class Material(object):
+    __material_name = 'isolator'
+
+    def __repr__(self):
+        return self.__material_name
+
+
 class Metals(Enum):
-    generic = 1
+    generic = 'metal'
     Aluminum = 2
     Copper = 3
     Titanium = 4
@@ -11,11 +18,12 @@ class Metals(Enum):
     Cobalt = 6
 
 
-class Silicon(object):
+class Silicon(Material):
     """
     Silicon material
     Look at `self.parameters` for the material parameters
     """
+    __material_name = 'silicon'
     __defaults = {
         "Permittivity": 11.1 * eps_0,
         "n_i": 1e10,

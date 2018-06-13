@@ -7,6 +7,17 @@ import enum
 from ds import *
 
 
+class Region(object):
+    """A Region within a Semiconductor"""
+    def __init__(self, name, material):
+        super(Region, self).__init__()
+        self.name = name
+        self.material = material
+
+    def __str__(self):
+        return self.name
+
+
 class Mesh(object):
     """
     The Mesh is the base of the simulation. As of now, only 1d meshes are
@@ -75,7 +86,7 @@ class Mesh(object):
             mesh=self.name, material=str(_mat), region=name, tag1=tag1, tag2=tag2
         )
         # Maybe add name, material as tuple?
-        self.regions.append(name)
+        self.regions.append(Region(name, material))
 
     def finalize(self):
         """

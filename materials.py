@@ -27,9 +27,6 @@ class Silicon(Material):
     __defaults = {
         "Permittivity": 11.1 * eps_0,
         "n_i": 1e10,
-        "T": T,
-        "kT": k * T,
-        "V_t": k * T / q,
         # mu_n and mu_p are specific for Silicon
         "mu_n": 400,
         "mu_p": 200,
@@ -49,6 +46,7 @@ class Silicon(Material):
         """
         self.parameters = self.__defaults.copy()
         self.parameters.update(kwargs)
+
 
 
 class Semiconductors(Enum):

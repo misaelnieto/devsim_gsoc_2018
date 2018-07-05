@@ -49,7 +49,9 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
         hb.props.title = WINDOW_TITLE
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         Gtk.StyleContext.add_class(box.get_style_context(), "linked")
-        box.add(Gtk.Button('Open'))
+        button = Gtk.Button('Open')
+        button.connect("clicked", self.on_open_clicked)
+        box.add(button)
         hb.pack_start(box)
         # self.add(Gtk.TextView())
         self.set_titlebar(hb)
@@ -77,6 +79,22 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
         else:
             self.unmaximize()
 
+    def on_open_clicked(self, widget):
+        dialog = Gtk.FileChooserDialog(
+            "Please choose a file",
+            self,
+            Gtk.FileChooserAction.OPEN,
+            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+        )
+
+        response = dialog.run()
+        if response == Gtk.ResponseType.OK:
+            print("Open clicked")
+            print("File selected: " + dialog.get_filename())
+        elif response == Gtk.ResponseType.CANCEL:
+            print("Cancel clicked")
+
+        dialog.destroy()
 
 class TraceyApp(Gtk.Application):
     def __init__(self):

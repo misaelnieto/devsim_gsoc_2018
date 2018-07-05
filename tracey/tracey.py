@@ -5,33 +5,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import  Gio, GLib, Gtk, GdkPixbuf
 
-MENU_XML="""
-<?xml version="1.0" encoding="UTF-8"?>
-<interface>
-  <menu id="app-menu">
-    <section>
-      <item>
-        <attribute name="action">win.maximize</attribute>
-        <attribute name="label" translatable="yes">Maximize</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="action">app.about</attribute>
-        <attribute name="label" translatable="yes">_About</attribute>
-      </item>
-      <item>
-        <attribute name="action">app.quit</attribute>
-        <attribute name="label" translatable="yes">_Quit</attribute>
-        <attribute name="accel">&lt;Primary&gt;q</attribute>
-    </item>
-    </section>
-  </menu>
-</interface>
-"""
 
 WINDOW_TITLE = 'Tracey - Devsim structure viewer'
-
 
 class TraceyAppWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
@@ -53,7 +28,7 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
         button.connect("clicked", self.on_open_clicked)
         box.add(button)
         hb.pack_start(box)
-        # self.add(Gtk.TextView())
+        self.add(Gtk.Image.new_from_file('tracey.svg'))
         self.set_titlebar(hb)
 
         # This stuff is for the gnome application menu
@@ -71,6 +46,7 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
             "notify::is-maximized",
             lambda obj, pspec: max_action.set_state(GLib.Variant.new_boolean(obj.props.is_maximized))
         )
+
 
     def on_maximize_toggle(self, action, value):
         action.set_state(value)
@@ -117,7 +93,7 @@ class TraceyApp(Gtk.Application):
         action.connect("activate", self.on_quit)
         self.add_action(action)
 
-        builder = Gtk.Builder.new_from_string(MENU_XML, -1)
+        builder = Gtk.Builder.new_from_string(open('system_menu.ui', 'r').read(), -1)
         self.set_app_menu(builder.get_object("app-menu"))
 
     def do_activate(self):

@@ -4,9 +4,51 @@ import sys
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import  Gio, GLib, Gtk, GdkPixbuf
-
+from parser import DevsimData
 
 WINDOW_TITLE = 'Tracey - Devsim structure viewer'
+
+
+class Workspace(Gtk.Box):
+    def __init__(self):
+        super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
+        # Separator Pane
+        pane = Gtk.Paned.new(Gtk.Orientation.HORIZONTAL)
+        self.pack_start(
+            pane,
+            expand=True,
+            fill=True,
+            padding=0
+        )
+
+        # TreeView
+        self.model = Gtk.TreeStore(str, str, float)
+        self.tview = Gtk.TreeView(self.model)
+        self.tview.set_headers_visible(True)
+        col = Gtk.TreeViewColumn('Columna')
+        self.tview.append_column(col)
+        renderer = Gtk.CellRendererText()
+        col.pack_start(renderer, expand=True)
+        scroll = Gtk.ScrolledWindow()
+        scroll.add(self.tview)
+        pane.add1(
+            scroll,
+        )
+
+        # Notebook for graph and grid
+        pane.add2(
+            Gtk.Image.new_from_file('You-dense-motherfucker.png'),
+        )
+
+    def load_data(self, filename):
+        # self.data = DevsimData(filename)
+        # Populate tree view
+        self.model.append(None, ["Foo", "Bar", 3.1416])
+        self.model.append(None, ["Baz", "Frov", 12.33])
+        self.model.append(None, ["FGuoo", "Prsdff", 1.4142])
+
+        # Add Graph and raw data to notebook
+
 
 class TraceyAppWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
@@ -28,8 +70,12 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
         button.connect("clicked", self.on_open_clicked)
         box.add(button)
         hb.pack_start(box)
-        self.add(Gtk.Image.new_from_file('tracey.svg'))
         self.set_titlebar(hb)
+
+        # Workspace
+        self.wkspace = None
+        self.bg_image = Gtk.Image.new_from_file('tracey.svg')
+        self.add(self.bg_image)
 
         # This stuff is for the gnome application menu
         # This will be in the windows group and have the "win" prefix
@@ -65,11 +111,13 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
 
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
-            print("Open clicked")
             print("File selected: " + dialog.get_filename())
-        elif response == Gtk.ResponseType.CANCEL:
-            print("Cancel clicked")
-
+            if self.wkspace is None:
+                self.remove(self.bg_image)
+                self.wkspace = Workspace()
+                self.add(self.wkspace)
+            self.wkspace.load_data(dialog.get_filename())
+            self.show_all()
         dialog.destroy()
 
 class TraceyApp(Gtk.Application):

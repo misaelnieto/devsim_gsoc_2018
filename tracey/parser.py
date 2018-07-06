@@ -1,7 +1,7 @@
 #!/bin/env python3
 
 
-class Device(object):
+class DevsimData(object):
     """
     Simple object contains the coordinates
     Should probably be replace with numpy's dtype and loadtxt
@@ -65,9 +65,9 @@ class Device(object):
                             line = fp.readline().strip()
                     line = fp.readline().strip()
     def __str__(self):
-        return 'Device "{}" ({} regions)'.format(self.name, len(self.regions))
+        return 'DevsimData "{}" ({} regions)'.format(self.name, len(self.regions))
 
 
 if __name__ == '__main__':
-    d = Device('../resistor.dat')
+    d = DevsimData('../resistor.dat')
     print(d)

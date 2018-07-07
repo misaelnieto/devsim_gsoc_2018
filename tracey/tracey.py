@@ -6,46 +6,55 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import  Gio, GLib, Gtk, GdkPixbuf
 from parser import DevsimData
 
+
 WINDOW_TITLE = 'Tracey - Devsim structure viewer'
+TRACEY_LOGO = 'tracey.svg'
 
 
 class Workspace(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
-        # Separator Pane
-        pane = Gtk.Paned.new(Gtk.Orientation.HORIZONTAL)
+
+        # TreeView
+        self.model = Gtk.TreeStore(str)
+        self.tview = Gtk.TreeView(self.model)
+        self.tview.set_headers_visible(True)
+        renderer = Gtk.CellRendererText()
+        col = Gtk.TreeViewColumn('Device (Resistor)', renderer, text=0)
+        self.tview.append_column(col)
+
+        # Background
+        self.background = Gtk.Image.new_from_file(TRACEY_LOGO)
+
+        # Finally, configure the pane
+        self.pane = Gtk.Paned.new(Gtk.Orientation.HORIZONTAL)
         self.pack_start(
-            pane,
+            self.pane,
             expand=True,
             fill=True,
             padding=0
         )
-
-        # TreeView
-        self.model = Gtk.TreeStore(str, str, float)
-        self.tview = Gtk.TreeView(self.model)
-        self.tview.set_headers_visible(True)
-        col = Gtk.TreeViewColumn('Columna')
-        self.tview.append_column(col)
-        renderer = Gtk.CellRendererText()
-        col.pack_start(renderer, expand=True)
         scroll = Gtk.ScrolledWindow()
         scroll.add(self.tview)
-        pane.add1(
-            scroll,
-        )
-
-        # Notebook for graph and grid
-        pane.add2(
-            Gtk.Image.new_from_file('You-dense-motherfucker.png'),
-        )
+        self.pane.add1(scroll)
+        self.pane.add2(self.background)
 
     def load_data(self, filename):
         # self.data = DevsimData(filename)
         # Populate tree view
-        self.model.append(None, ["Foo", "Bar", 3.1416])
-        self.model.append(None, ["Baz", "Frov", 12.33])
-        self.model.append(None, ["FGuoo", "Prsdff", 1.4142])
+        self.model.append(None, ["Coordinates"])
+        subs = self.model.append(None, ["Substrate (Silicon)"])
+        self.model.append(subs, ["Nodes"])
+        node_solutions = self.model.append(subs, ["Node solutions"])
+        self.model.append(node_solutions, ["Acceptors"])
+        self.model.append(node_solutions, ["AtContactNode"])
+        self.model.append(node_solutions, ["Donors"])
+        self.model.append(node_solutions, ["ContactSurfaceArea"])
+        self.model.append(node_solutions, ["ElectronGeneration"])
+        self.model.append(node_solutions, ["ElectronGeneration:Electrons"])
+        self.model.append(subs, ["Edges"])
+        self.model.append(subs, ["Edge solutions"])
+        contacts = self.model.append(None, ["Contacts"])
 
         # Add Graph and raw data to notebook
 
@@ -58,7 +67,7 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
         self.props.title = WINDOW_TITLE
         self.props.default_width = 640
         self.props.default_height = 400
-        self.set_icon_from_file('tracey.svg')
+        self.set_icon_from_file(TRACEY_LOGO)
 
         # Now setup the header bar
         hb = Gtk.HeaderBar()
@@ -74,7 +83,7 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
 
         # Workspace
         self.wkspace = None
-        self.bg_image = Gtk.Image.new_from_file('tracey.svg')
+        self.bg_image = Gtk.Image.new_from_file(TRACEY_LOGO)
         self.add(self.bg_image)
 
         # This stuff is for the gnome application menu
@@ -92,7 +101,6 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
             "notify::is-maximized",
             lambda obj, pspec: max_action.set_state(GLib.Variant.new_boolean(obj.props.is_maximized))
         )
-
 
     def on_maximize_toggle(self, action, value):
         action.set_state(value)
@@ -119,6 +127,7 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
             self.wkspace.load_data(dialog.get_filename())
             self.show_all()
         dialog.destroy()
+
 
 class TraceyApp(Gtk.Application):
     def __init__(self):
@@ -166,7 +175,7 @@ class TraceyApp(Gtk.Application):
 
     def on_about(self, action, param):
         about_dialog = Gtk.AboutDialog(transient_for=self.window, modal=True)
-        logo = GdkPixbuf.Pixbuf.new_from_file_at_size('tracey.svg', 128, 128)
+        logo = GdkPixbuf.Pixbuf.new_from_file_at_size(TRACEY_LOGO, 128, 128)
         about_dialog.props.logo = logo
         about_dialog.props.program_name = "Tracey"
         about_dialog.props.version = "0.0"
@@ -179,6 +188,7 @@ class TraceyApp(Gtk.Application):
 
     def on_quit(self, action, param):
         self.quit()
+
 
 if __name__ == '__main__':
     app = TraceyApp()

@@ -15,13 +15,13 @@ class Workspace(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
 
-        # TreeView
-        self.model = Gtk.TreeStore(str)
-        self.tview = Gtk.TreeView(self.model)
-        self.tview.set_headers_visible(True)
+        # TreeView for device and subsections
+        self.devices_model = Gtk.TreeStore(str)
+        self.devices_view = Gtk.TreeView(self.devices_model)
+        self.devices_view.set_headers_visible(True)
         renderer = Gtk.CellRendererText()
         col = Gtk.TreeViewColumn('Device (Resistor)', renderer, text=0)
-        self.tview.append_column(col)
+        self.devices_view.append_column(col)
 
         # Background
         self.background = Gtk.Image.new_from_file(TRACEY_LOGO)
@@ -35,26 +35,47 @@ class Workspace(Gtk.Box):
             padding=0
         )
         scroll = Gtk.ScrolledWindow()
-        scroll.add(self.tview)
+        scroll.add(self.devices_view)
         self.pane.add1(scroll)
         self.pane.add2(self.background)
 
     def load_data(self, filename):
-        # self.data = DevsimData(filename)
-        # Populate tree view
-        self.model.append(None, ["Coordinates"])
-        subs = self.model.append(None, ["Substrate (Silicon)"])
-        self.model.append(subs, ["Nodes"])
-        node_solutions = self.model.append(subs, ["Node solutions"])
-        self.model.append(node_solutions, ["Acceptors"])
-        self.model.append(node_solutions, ["AtContactNode"])
-        self.model.append(node_solutions, ["Donors"])
-        self.model.append(node_solutions, ["ContactSurfaceArea"])
-        self.model.append(node_solutions, ["ElectronGeneration"])
-        self.model.append(node_solutions, ["ElectronGeneration:Electrons"])
-        self.model.append(subs, ["Edges"])
-        self.model.append(subs, ["Edge solutions"])
-        contacts = self.model.append(None, ["Contacts"])
+        self.data = DevsimData(filename)
+        self.load_sections()
+
+    def load_section_data(self, n_columns):
+        # Data Grid
+        model = Gtk.ListStore(*[str for s in range(n_columns + 1)])
+        view = Gtk.TreeView(model)
+        for n in range(n_columns + 1):
+            renderer = Gtk.CellRendererText()
+            col = Gtk.TreeViewColumn(str, renderer, text=0)
+            view.append_column(col)
+            renderer = Gtk.CellRendererText()
+            col = Gtk.TreeViewColumn(str, renderer, text=0)
+            view.append_column(col)
+        self.pane.remove(self.pane.get_child2())
+        self.pane.add2(view)
+
+        # populate model
+        self.model.append([0.1, '', ''])
+
+    def load_sections(self):
+        self.devices_view.get_column(0).set_title(self.data.name)
+        self.devices_model.append(None, ["Coordinates"])
+        # Regions
+        regions = self.devices_model.append(None, ["Regions"])
+        for rname, rdata in self.data.regions.items():
+            region = self.devices_model.append(regions, ['{} ({})'.format(rname, rdata['material'])])
+            self.devices_model.append(region, ["Nodes"])
+            node_solutions = self.devices_model.append(region, ["Node solutions"])
+            for sname in rdata['node_solutions']:
+                self.devices_model.append(node_solutions, [sname])
+            self.devices_model.append(region, ["Edges"])
+            edge_solutions = self.devices_model.append(region, ["Edge solutions"])
+            for sname in rdata['edge_solutions']:
+                self.devices_model.append(edge_solutions, [sname])
+        contacts = self.devices_model.append(None, ["Contacts"])
 
         # Add Graph and raw data to notebook
 

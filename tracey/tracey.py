@@ -52,27 +52,28 @@ class Workspace(Gtk.Box):
         self.load_sections()
 
     def load_datagrid(self, tree_widget, tree_path, tree_column):
-        datum = self.data_map[str(tree_path)]
-        # How many columns do we need?
-        n_columns = len(datum[0])
+        if str(tree_path) in self.data_map:
+            datum = self.data_map[str(tree_path)]
+            # How many columns do we need?
+            n_columns = len(datum[0])
 
-        # Data Grid
-        model = Gtk.ListStore(*[str] * (n_columns))
-        view = Gtk.TreeView(model)
-        for n in range(n_columns):
-            renderer = Gtk.CellRendererText()
-            col = Gtk.TreeViewColumn(str, renderer, text=0)
-            col.set_title(COLUMN_TITLES[n])
-            view.append_column(col)
-        self.pane.remove(self.pane.get_child2())
-        scroll = Gtk.ScrolledWindow()
-        scroll.add(view)
-        self.pane.add2(scroll)
+            # Data Grid
+            model = Gtk.ListStore(*[str] * (n_columns))
+            view = Gtk.TreeView(model)
+            for n in range(n_columns):
+                renderer = Gtk.CellRendererText()
+                col = Gtk.TreeViewColumn(str, renderer, text=n)
+                col.set_title(COLUMN_TITLES[n])
+                view.append_column(col)
+            self.pane.remove(self.pane.get_child2())
+            scroll = Gtk.ScrolledWindow()
+            scroll.add(view)
+            self.pane.add2(scroll)
 
-        # populate model
-        for r in datum:
-            model.append([str(c) for c in r])
-        self.show_all()
+            # populate model
+            for r in datum:
+                model.append([str(c) for c in r])
+            self.show_all()
 
     def register_datamap(self, t_iter, datum):
         self.data_map[
@@ -161,7 +162,6 @@ class TraceyAppWindow(Gtk.ApplicationWindow):
 
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
-            print("File selected: " + dialog.get_filename())
             if self.wkspace is None:
                 self.remove(self.bg_image)
                 self.wkspace = Workspace()

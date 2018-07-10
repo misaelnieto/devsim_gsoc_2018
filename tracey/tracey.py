@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # coding=utf8
 import sys
+from string import ascii_lowercase
 import gi
+
 gi.require_version("Gtk", "3.0")
 from gi.repository import  Gio, GLib, Gtk, GdkPixbuf
 from parser import DevsimData
@@ -9,6 +11,7 @@ from parser import DevsimData
 
 WINDOW_TITLE = 'Tracey - Devsim structure viewer'
 TRACEY_LOGO = 'tracey.svg'
+COLUMN_TITLES = 'xyz' + ascii_lowercase[:-3][::-1]
 
 
 class Workspace(Gtk.Box):
@@ -22,6 +25,9 @@ class Workspace(Gtk.Box):
         renderer = Gtk.CellRendererText()
         col = Gtk.TreeViewColumn('Device (Resistor)', renderer, text=0)
         self.devices_view.append_column(col)
+        self.devices_view.props.activate_on_single_click = True
+        self.devices_view.props.enable_tree_lines = True
+        self.devices_view.connect('row-activated', self.load_datagrid)
 
         # Background
         self.background = Gtk.Image.new_from_file(TRACEY_LOGO)
@@ -39,45 +45,60 @@ class Workspace(Gtk.Box):
         self.pane.add1(scroll)
         self.pane.add2(self.background)
 
+        self.data_map = {}
+
     def load_data(self, filename):
         self.data = DevsimData(filename)
         self.load_sections()
 
-    def load_section_data(self, n_columns):
+    def load_datagrid(self, tree_widget, tree_path, tree_column):
+        datum = self.data_map[str(tree_path)]
+        # How many columns do we need?
+        n_columns = len(datum[0])
+
         # Data Grid
-        model = Gtk.ListStore(*[str for s in range(n_columns + 1)])
+        model = Gtk.ListStore(*[str] * (n_columns))
         view = Gtk.TreeView(model)
-        for n in range(n_columns + 1):
+        for n in range(n_columns):
             renderer = Gtk.CellRendererText()
             col = Gtk.TreeViewColumn(str, renderer, text=0)
-            view.append_column(col)
-            renderer = Gtk.CellRendererText()
-            col = Gtk.TreeViewColumn(str, renderer, text=0)
+            col.set_title(COLUMN_TITLES[n])
             view.append_column(col)
         self.pane.remove(self.pane.get_child2())
-        self.pane.add2(view)
+        scroll = Gtk.ScrolledWindow()
+        scroll.add(view)
+        self.pane.add2(scroll)
 
         # populate model
-        self.model.append([0.1, '', ''])
+        for r in datum:
+            model.append([str(c) for c in r])
+        self.show_all()
+
+    def register_datamap(self, t_iter, datum):
+        self.data_map[
+            self.devices_model.get_path(t_iter).to_string()
+        ] = datum
 
     def load_sections(self):
         self.devices_view.get_column(0).set_title(self.data.name)
-        self.devices_model.append(None, ["Coordinates"])
+        coords_iter = self.devices_model.append(None, ["Coordinates"])
+        self.register_datamap(coords_iter, self.data.coordinates)
         # Regions
-        regions = self.devices_model.append(None, ["Regions"])
+        regions_iter = self.devices_model.append(None, ["Regions"])
         for rname, rdata in self.data.regions.items():
-            region = self.devices_model.append(regions, ['{} ({})'.format(rname, rdata['material'])])
-            self.devices_model.append(region, ["Nodes"])
-            node_solutions = self.devices_model.append(region, ["Node solutions"])
+            region_iter = self.devices_model.append(regions_iter, ['{} ({})'.format(rname, rdata['material'])])
+            self.devices_model.append(region_iter, ["Nodes"])
+            self.register_datamap(region_iter, self.data.regions[rname]['nodes'])
+            nss_iter = self.devices_model.append(region_iter, ["Node solutions"])
             for sname in rdata['node_solutions']:
-                self.devices_model.append(node_solutions, [sname])
-            self.devices_model.append(region, ["Edges"])
-            edge_solutions = self.devices_model.append(region, ["Edge solutions"])
+                ns = self.devices_model.append(nss_iter, [sname])
+                self.register_datamap(ns, self.data.regions[rname]['node_solutions'][sname])
+            self.devices_model.append(region_iter, ["Edges"])
+            ess_iter = self.devices_model.append(region_iter, ["Edge solutions"])
             for sname in rdata['edge_solutions']:
-                self.devices_model.append(edge_solutions, [sname])
+                self.devices_model.append(ess_iter, [sname])
+                self.register_datamap(ns, self.data.regions[rname]['edge_solutions'][sname])
         contacts = self.devices_model.append(None, ["Contacts"])
-
-        # Add Graph and raw data to notebook
 
 
 class TraceyAppWindow(Gtk.ApplicationWindow):

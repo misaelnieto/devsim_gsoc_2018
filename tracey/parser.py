@@ -10,6 +10,7 @@ class DevsimData(object):
         self.filename = filename
         self.regions = {}
         self.name = None
+        self.coordinates = None
         with open(filename, 'r') as fp:
             line = fp.readline().strip()
             if line.startswith('begin_device'):

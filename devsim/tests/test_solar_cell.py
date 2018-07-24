@@ -1,6 +1,5 @@
-import mesh
-import device
-import materials
+from devsim import mesh, device, materials
+
 
 mesh = mesh.Mesh('Cell Mesh')
 # default units are micrometers

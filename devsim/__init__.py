@@ -1,7 +1,5 @@
-from enum import Enum
 
-
-class PhysicalConstants(Enum):
+class PhysicalConstants(object):
     # Vacuum permittivity or Dielectric constant (F/cm^2)
     eps_0 = 8.85e-14
     # The electron charge (Couloumbs)

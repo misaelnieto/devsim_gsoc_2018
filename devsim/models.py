@@ -1,5 +1,4 @@
 
-# Should be on 
 class BeerLambert(object):
     """
     This is the simplest model to calculate absorption

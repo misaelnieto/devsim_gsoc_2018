@@ -1,5 +1,6 @@
-from constants import *
 from enum import Enum
+
+from devsim import PhysicalConstants
 
 
 class Material(object):
@@ -25,7 +26,7 @@ class Silicon(Material):
     """
     __material_name = 'silicon'
     __defaults = {
-        "Permittivity": 11.1 * eps_0,
+        "Permittivity": 11.1 * PhysicalConstants.eps_0,
         "n_i": 1e10,
         # mu_n and mu_p are specific for Silicon
         "mu_n": 400,

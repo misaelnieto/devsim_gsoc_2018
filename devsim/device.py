@@ -482,7 +482,7 @@ class Device(object):
             Region is an instance of the mesh.Region class
         """
         # Region context
-        import constants as c
+        from devsim import PhysicalConstants as c
         for region in self.mesh.regions:
             for n, v in region.material.parameters.items():
                 set_parameter(device=self.name, region=region.name, name=n, value=v)

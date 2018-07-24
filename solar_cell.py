@@ -3,17 +3,18 @@ import device
 import materials
 
 mesh = mesh.Mesh('Cell Mesh')
-mesh.add_line(pos=0, ps=1e-7, tag='top')
-mesh.add_line(pos=0.5e-5, ps=1e-9, tag='middle')
-mesh.add_line(pos=1e-5, ps=1e-7, tag='bottom')
-mesh.add_contact(name='top', tag='top', material=materials.Metals.generic)
-mesh.add_contact(name='bottom', tag='bottom', material=materials.Metals.generic)
+# default units are micrometers
+# (position, spacing, tag)
+mesh.add_line(position=0.00, spacing=0.01, tag='anode')
+mesh.add_line(position=10.00, spacing=1.0, tag='cathode')
+mesh.add_contact(name='anode', tag='anode', material=materials.Metals.generic)
+mesh.add_contact(name='cathode', tag='cathode', material=materials.Metals.generic)
 
 substrate = 'Cell Substrate'
 mesh.add_region(
     name=substrate,
     material=materials.Silicon(taup=1e-8, taun=1e-8),
-    tag1='top', tag2='bottom'
+    tag1='anode', tag2='cathode'
 )
 mesh.finalize()
 

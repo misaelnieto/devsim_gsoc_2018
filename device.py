@@ -432,8 +432,8 @@ class Device(object):
             CreateSiliconPotentialOnly(self.name, region)
 
             # Set up the contacts applying a bias
-            # TODO: Try to use self.contacts instead
-            # it is more correct for the bias to be 0, and it looks like there is side effects
+            # TODO: Try to use self.contacts instead it is more correct for
+            # the bias to be 0, and it looks like there are side effects
 
             for c in self.mesh.contacts:
                 set_parameter(device=self.name, name=self._contact_bias_name(c), value=0.0)
@@ -492,5 +492,5 @@ class Device(object):
             set_parameter(device=self.name, region=region.name, name="kT", value=c.k * c.T)
             set_parameter(device=self.name, region=region.name, name="V_t", value=c.k * c.T / c.q)
 
-    def export(self, filename, format):
+    def export(self, filename, format='devsim_data'):
         write_devices(file=filename, type=format)

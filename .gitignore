@@ -1,4 +1,11 @@
-*.py[co]
 __pycache__
 python_packages
 *.sublime-*
+# Compiled python modules.
+*.py[co]
+
+# Setuptools distribution folder.
+/dist/
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info

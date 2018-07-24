@@ -16,3 +16,12 @@ class LightsourceTestCase(unittest.TestCase):
         self.assertEqual(src.irradiance(280.75), 0.1245)
         self.assertEqual(src.irradiance(3926.25), 0.00938)
 
+    def test_am0_subset(self):
+        from devsim.light_sources import AM0
+        src = AM0(lambda_min=500, lambda_max=1000)
+        self.assertEqual(src.lambda_min, 500)
+        self.assertEqual(src.lambda_max, 1000)
+        self.assertEqual(src.irradiance(500), 8.2e-2)
+        self.assertEqual(src.irradiance(1000), 8.68e-3)
+
+

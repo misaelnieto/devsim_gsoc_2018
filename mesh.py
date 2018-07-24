@@ -39,15 +39,42 @@ class Mesh(object):
         print("Contacts: {}\n".format(','.join(self.contacts)))
         print("Regions: {}\n".format(','.join(self.regions)))
 
-    def add_line(self, pos, ps, tag):
+    def add_line(self, position, spacing, tag):
         """
         Add a line to the mesh
 
-        pos: position
-        ps: dunno
+        position: Position
+        spacing: Positive spacing
         tag: a tag for ...?
+
+        The spacing option is *positive spacing* to the next line that you have
+        added.
+
+        Additional lines are spaced from the first line using ps to the next
+        specified line. The spacing of the lines are gradually spaced out to
+        meet the spacing line of the next added line.
+
+        So if you have thre lines::
+
+            x=0.0 spacing=0.1
+            x=1.0 spacing=1.0
+            x=10.0 spacing=1.0
+
+        The positions of the nodes should be about: 10 nodes from `0.0 um` to
+        `0.1 um` and 10 nodes from `1.0 um` to `10.0 um` and no nodes from 10
+        up.
+
+        The purpose of this is to have tight mesh spacing in areas where it is
+        important. If you had tight spacing everywhere, it could make the
+        simulation much slower.
         """
-        add_1d_mesh_line(mesh=self.name, pos=pos, ps=ps, tag=tag)
+        scale = 1e-6
+        add_1d_mesh_line(
+            mesh=self.name,
+            pos=position * scale,
+            ps=spacing * scale,
+            tag=tag
+        )
 
     def add_contact(self, name, tag, material):
         """

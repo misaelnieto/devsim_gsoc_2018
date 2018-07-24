@@ -29,5 +29,6 @@ class AM0(object):
             Returns spectral irradiance for the given wavelength
             Units: W/(m–2⋅nm–1)
         """
-        return 1
+        ix = self._wavelength.index(wavelength)
+        return self._irradiance[ix]
 

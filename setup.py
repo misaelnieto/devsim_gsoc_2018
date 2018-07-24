@@ -29,6 +29,7 @@ setup(
     keywords='TCAD semiconductors',
     python_requires='>=3',
     install_requires=[
+        'numpy'
     ],
     test_suite='nose.collector',
     tests_require=['nose'],

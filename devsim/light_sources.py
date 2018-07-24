@@ -1,6 +1,6 @@
 import os.path
 import csv
-
+from numpy import interp as interpolate
 
 DATADIR = os.path.join(os.path.dirname(__file__), 'data')
 
@@ -29,6 +29,12 @@ class AM0(object):
             Returns spectral irradiance for the given wavelength
             Units: W/(m–2⋅nm–1)
         """
-        ix = self._wavelength.index(wavelength)
-        return self._irradiance[ix]
-
+        if wavelength in self._wavelength:
+            ix = self._wavelength.index(wavelength)
+            return self._irradiance[ix]
+        else:
+            return interpolate(
+                wavelength,
+                self._wavelength,
+                self._irradiance
+            )

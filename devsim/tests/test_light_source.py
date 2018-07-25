@@ -30,9 +30,17 @@ class LightsourceTestCase(unittest.TestCase):
     def test_am0_subsambpling(self):
         from devsim.light_sources import AM0
         src = AM0(samples=25)
-        self.assertEquals(len(src), 25)
+        self.assertEqual(len(src), 25)
         src = AM0(samples=87)
-        self.assertEquals(len(src), 87)
+        self.assertEqual(len(src), 87)
         # Except for 1001, because the AM0 csv file has 2002 rows
         src = AM0(samples=1001)
-        self.assertEquals(len(src), 1001)
+        self.assertEqual(len(src), 1001)
+
+    def test_am0_as_iterator(self):
+        from devsim.light_sources import AM0
+        src = AM0(samples=10)
+        self.assertEqual(
+            [l for l in src],
+            [280.0, 380.0, 560.0, 760.0, 960.0, 1160.0, 1360.0, 1560.0, 1995.0, 2995.0]
+        )

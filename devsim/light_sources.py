@@ -29,12 +29,13 @@ class AM0(object):
             Returns spectral irradiance for the given wavelength
             Units: W/(m–2⋅nm–1)
         """
+        if wavelength < self.lambda_min or wavelength > self.lambda_max:
+            return 0.0
         if wavelength in self._wavelength:
             ix = self._wavelength.index(wavelength)
             return self._irradiance[ix]
-        else:
-            return interpolate(
-                wavelength,
-                self._wavelength,
-                self._irradiance
-            )
+        return interpolate(
+            wavelength,
+            self._wavelength,
+            self._irradiance
+        )

@@ -36,6 +36,12 @@ class AM0(object):
     def __len__(self):
         return len(self._wavelength)
 
+    def __iter__(self):
+        return self._wavelength.__iter__()
+
+    def __next__(self):
+        return self._wavelength.__next__()
+
     def irradiance(self, wavelength):
         """
             Returns spectral irradiance for the given wavelength

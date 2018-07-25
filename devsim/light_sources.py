@@ -12,7 +12,7 @@ class AM0(object):
         self.lambda_max = lambda_max
         self._wavelength = []
         self._irradiance = []
-        # open the file
+
         data_file = os.path.join(DATADIR, 'AM0.csv')
         with open(data_file, newline='') as csvfile:
             reader = csv.DictReader(
@@ -23,6 +23,18 @@ class AM0(object):
                 if lambda_min <= wl <= lambda_max:
                     self._wavelength.append(wl)
                     self._irradiance.append(float(row['irradiance']))
+
+        if samples is not None:
+            # Probably not the best way? We'll see
+            interval = len(self._wavelength) // samples
+            self._wavelength = self._wavelength[::interval]
+            self._irradiance = self._irradiance[::interval]
+            if len(self._wavelength) == samples + 1:
+                self._wavelength.pop()
+                self._irradiance.pop()
+
+    def __len__(self):
+        return len(self._wavelength)
 
     def irradiance(self, wavelength):
         """

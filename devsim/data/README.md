@@ -66,9 +66,13 @@ Downloaded from [PV Lighthouse](https://www2.pvlighthouse.com.au/resources/optic
 - **Photon current**: 46,428190     mA/cm2
 
 
-## Si-Optical-properties.csv
+## Refractive indexes
 
-Refractive index data downloaded from [PV Lighthouse](https://www2.pvlighthouse.com.au/resources/photovoltaic%20materials/refractive%20index/refractive%20index.aspx)
+Files contained in data folder: `data/refractive_indexes`
+
+### Si.csv
+
+Refractive index data of Silicon downloaded from [PV Lighthouse](https://www2.pvlighthouse.com.au/resources/photovoltaic%20materials/refractive%20index/refractive%20index.aspx)
 
 **Description**: This is a list of the complex refractive index for Si in function of the
 of the wave length.
@@ -76,6 +80,22 @@ of the wave length.
 Reference
 
 [Gre08] M. Green, 'Self-consistent optical parameters of intrinsic silicon at 300K including temperature coefficients', Solar Energy Materials & Solar Cells 92, pp. 1305–1310, 2008. 
+
+- Row 1: Wavelength
+- Row 2: n (real part of refractive index)
+- Row 3: k (imaginary part of refractive index: Exctinction coefficient)
+- Row 4: alpha (cm-1) absorption coefficient
+
+### Air.csv
+
+**Description**: This is the complex refractive index for Air in function of
+the wave length.
+
+**Downloaded from** [PV Lighthouse](https://www2.pvlighthouse.com.au/resources/photovoltaic%20materials/refractive%20index/refractive%20index.aspx)
+
+Reference:
+
+[Pal85d]    E. Palik, Handbook of Optical Constants of Solids Vol I, Academic Press, Orlando, pp. 577–580, 1985. 
 
 - Row 1: Wavelength
 - Row 2: n (real part of refractive index)

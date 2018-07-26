@@ -6,10 +6,41 @@ from devsim import PhysicalConstants
 class Material(object):
     __material_name = 'isolator'
 
+    def __init__(self, **kwargs):
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+
     def __repr__(self):
         return self.__material_name
 
 
+class Air(Material):
+    __material_name = 'air'
+
+    refractive_index = {}
+
+class Silicon(Material):
+    """
+    Cristaline Silicon material
+    Provide alternate values for the
+    parameters like this:
+
+    s = Silicon(T=327, taun=1e16, taup=1.44e-6)
+    """
+    __material_name = 'silicon'
+    Permittivity = 11.1 * PhysicalConstants.eps_0
+    n_i = 1e10
+    # mu_n and mu_p are specific for Silicon
+    mu_n = 400
+    mu_p = 200
+    # default SRH parameters
+    n1 = 1e10
+    p1 = 1e10
+    taun = 1e-5
+    taup = 1e-5
+
+##############################################################################
+# Enums below
 class Metals(Enum):
     generic = 'metal'
     Aluminum = 2
@@ -19,38 +50,7 @@ class Metals(Enum):
     Cobalt = 6
 
 
-class Silicon(Material):
-    """
-    Silicon material
-    Look at `self.parameters` for the material parameters
-    """
-    __material_name = 'silicon'
-    __defaults = {
-        "Permittivity": 11.1 * PhysicalConstants.eps_0,
-        "n_i": 1e10,
-        # mu_n and mu_p are specific for Silicon
-        "mu_n": 400,
-        "mu_p": 200,
-        # default SRH parameters
-        "n1": 1e10,
-        "p1": 1e10,
-        "taun": 1e-5,
-        "taup": 1e-5,
-    }
-
-    def __init__(self, **kwargs):
-        """
-        Creates a new Silicon material. Provide alternate values for the
-        parameters like this:
-
-        s = Silicon(T=327, taun=1e16, taup=1.44e-6)
-        """
-        self.parameters = self.__defaults.copy()
-        self.parameters.update(kwargs)
-
-
-
-class Semiconductors(Enum):
+class Semiconductors(object):
     Silicon = Silicon
     Si = Silicon
     # PolySilicon = 2

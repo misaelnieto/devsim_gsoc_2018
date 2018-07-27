@@ -2,6 +2,7 @@ import uuid
 import logging
 
 from ds import *
+from devsim import PhysicalConstants, Environment
 
 log = logging.getLogger("Device")
 
@@ -366,10 +367,13 @@ def CreateSolution(device, region, name):
 class Device(object):
     """docstring for Device"""
 
+    __models = None
+
     def __init__(self, name=None, mesh=None):
         self.name = name or 'device-%s' % str(uuid.uuid4())[:8]
         self.mesh = mesh
         create_device(mesh=self.mesh.name, device=self.name)
+        self._models = []
 
     def _contact_bias_name(self, contact):
         return "{0}_bias".format(contact)
@@ -420,6 +424,9 @@ class Device(object):
                 self.print_currents()
         else:
             solve(*args, **kwargs)
+
+        for mdl in self.__models:
+            mdl.solve(*args, **kwargs)
 
     def initial_solution(self):
         self.setup_context()
@@ -475,22 +482,18 @@ class Device(object):
             for c in self.mesh.contacts:
                 CreateSiliconDriftDiffusionAtContact(self.name, region.name, c)
 
-    # TODO: This thing should be set up by the material
+    def setup_model(self, model):
+        self.__models.append(model)
+
     def setup_context(self):
         """
-            Initialize the context for the equations. Basically sets some variables.
+            Initialize the context for the simulation.
             Region is an instance of the mesh.Region class
         """
-        # Region context
-        from devsim import PhysicalConstants as c
         for region in self.mesh.regions:
-            for n, v in region.material.parameters.items():
-                set_parameter(device=self.name, region=region.name, name=n, value=v)
-            # General
-            set_parameter(device=self.name, region=region.name, name="ElectronCharge", value=c.q)
-            set_parameter(device=self.name, region=region.name, name="T", value=c.T)
-            set_parameter(device=self.name, region=region.name, name="kT", value=c.k * c.T)
-            set_parameter(device=self.name, region=region.name, name="V_t", value=c.k * c.T / c.q)
+            PhysicalConstants.set_parameters_for(self.name, region.name)
+            Environment.set_parameters_for(self.name, region.name)
+            region.material.set_parameters_for(self.name, region.name)
 
     def export(self, filename, format='devsim_data'):
         write_devices(file=filename, type=format)

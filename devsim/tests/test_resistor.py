@@ -6,7 +6,7 @@ from devsim.device import Device
 from devsim import materials
 
 
-class TestStringMethods(unittest.TestCase):
+class ResistorTestCase(unittest.TestCase):
     def setUp(self):
         self.mesh =mesh = Mesh('Cell Mesh')
         # default units are micrometers

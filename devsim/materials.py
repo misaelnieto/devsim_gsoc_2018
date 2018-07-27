@@ -3,21 +3,40 @@ from enum import Enum
 from devsim import PhysicalConstants
 
 
+class MaterialProperty(object):
+    def __init__(self, value):
+        self.value = value
+
+
 class Material(object):
-    __material_name = 'isolator'
+    name = 'isolator'
+    __parameters = None
 
     def __init__(self, **kwargs):
+        self.__parameters = []
         for name, value in kwargs.items():
             setattr(self, name, value)
+            self.__parameters.append(name)
 
     def __repr__(self):
-        return self.__material_name
+        return self.name
+
+    def set_parameters_for(self, device_name, region_name):
+        from ds import set_parameter
+        props= [p for p in dir(self) if not p.startswith('_') and isinstance(getattr(self, p), MaterialProperty)]
+        for pname in props:
+            set_parameter(
+                device=device_name,
+                region=region_name,
+                name=pname, value=getattr(self, pname)
+            )
 
 
 class Air(Material):
-    __material_name = 'air'
+    name = 'air'
 
     refractive_index = {}
+
 
 class Silicon(Material):
     """
@@ -27,17 +46,23 @@ class Silicon(Material):
 
     s = Silicon(T=327, taun=1e16, taup=1.44e-6)
     """
-    __material_name = 'silicon'
-    Permittivity = 11.1 * PhysicalConstants.eps_0
-    n_i = 1e10
+    name = 'silicon'
+    Permittivity = MaterialProperty(11.1 * PhysicalConstants.eps_0.value)
+    n_i = MaterialProperty(1e10)
+
     # mu_n and mu_p are specific for Silicon
-    mu_n = 400
-    mu_p = 200
+    mu_n = MaterialProperty(400)
+    mu_p = MaterialProperty(200)
+
     # default SRH parameters
-    n1 = 1e10
-    p1 = 1e10
-    taun = 1e-5
-    taup = 1e-5
+    n1 = MaterialProperty(1e10)
+    p1 = MaterialProperty(1e10)
+    taun = MaterialProperty(1e-5)
+    taup = MaterialProperty(1e-5)
+
+    def __init__(self, *args, **kwargs):
+        super(Silicon, self).__init__(*args, **kwargs)
+
 
 ##############################################################################
 # Enums below

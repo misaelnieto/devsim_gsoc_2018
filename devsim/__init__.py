@@ -1,4 +1,9 @@
+from os.path import join as joinpath
+from os.path import dirname, abspath
 from ds import set_parameter
+
+
+DS_DATADIR = abspath(joinpath(dirname(__file__), 'data'))
 
 
 class ParameterEnum(object):

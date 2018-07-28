@@ -1,19 +1,27 @@
-from enum import Enum
 from ds import set_parameter
 
 
-class ParameterEnum(Enum):
+class ParameterEnum(object):
     def set_parameters_for(self, device, region):
-        for propname, propvalue in Environment.__members__.items():
+        """
+        Use this function to register the parameters of this class into the
+        simulation context. Internally uses ds.set_parameters()
+        """
+        props = [
+            pname for pname in dir(self)
+            if not pname.startswith('_') and not callable(getattr(self, pname))
+        ]
+
+        for propname in props:
             set_parameter(
                 device=device,
                 region=region,
                 name=propname,
-                value=propvalue
+                value=getattr(self, propname)
             )
 
 
-class PhysicalConstants(ParameterEnum):
+class _PhysicalConstants(ParameterEnum):
     # Vacuum permittivity or Dielectric constant (F/cm^2)
     eps_0 = 8.85e-14
     # The electron charge (Couloumbs)
@@ -21,7 +29,11 @@ class PhysicalConstants(ParameterEnum):
     # Planck's constant (J/K)
     k = 1.3806503e-23
 
+PhysicalConstants = _PhysicalConstants()
 
-class Environment(ParameterEnum):
+
+class _AmbientConditions(ParameterEnum):
     # Ambient temperature (k)
     T = 300
+
+AmbientConditions = _AmbientConditions()

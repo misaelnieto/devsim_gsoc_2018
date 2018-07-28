@@ -47,7 +47,7 @@ class Silicon(Material):
     s = Silicon(T=327, taun=1e16, taup=1.44e-6)
     """
     name = 'silicon'
-    Permittivity = MaterialProperty(11.1 * PhysicalConstants.eps_0.value)
+    Permittivity = MaterialProperty(11.1 * PhysicalConstants.eps_0)
     n_i = MaterialProperty(1e10)
 
     # mu_n and mu_p are specific for Silicon

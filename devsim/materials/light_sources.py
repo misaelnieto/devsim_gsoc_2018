@@ -1,8 +1,7 @@
-import os.path
+from os.path import join as joinpath
 import csv
 from numpy import interp as interpolate
-
-DATADIR = os.path.join(os.path.dirname(__file__), 'data')
+from devsim import DS_DATADIR
 
 
 class AM0(object):
@@ -13,7 +12,7 @@ class AM0(object):
         self._wavelength = []
         self._irradiance = []
 
-        data_file = os.path.join(DATADIR, 'AM0.csv')
+        data_file = joinpath(DS_DATADIR, 'AM0.csv')
         with open(data_file, newline='') as csvfile:
             reader = csv.DictReader(
                 csvfile, fieldnames=('wavelength', 'irradiance', 'photon_flux')

@@ -1,5 +1,5 @@
 from devsim import PhysicalConstants
-from devsim.materials import Material, MaterialProperty
+from .base import Material, MaterialProperty
 
 
 class Silicon(Material):
@@ -23,7 +23,4 @@ class Silicon(Material):
     p1 = MaterialProperty(1e10)
     taun = MaterialProperty(1e-5)
     taup = MaterialProperty(1e-5)
-
-    def __init__(self, *args, **kwargs):
-        super(Silicon, self).__init__(*args, **kwargs)
 

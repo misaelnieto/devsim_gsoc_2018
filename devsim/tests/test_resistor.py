@@ -1,7 +1,7 @@
 import unittest
 
 
-from devsim .mesh import Mesh
+from devsim.mesh import Mesh
 from devsim.device import Device
 from devsim import materials
 
@@ -18,7 +18,7 @@ class ResistorTestCase(unittest.TestCase):
         region_name = 'Substrate'
         mesh.add_region(
             name=region_name,
-            material=materials.Silicon(),
+            material=materials.Semiconductors.Silicon(),
             tag1='left', tag2='right'
         )
         mesh.finalize()

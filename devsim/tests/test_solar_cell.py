@@ -1,9 +1,9 @@
 import unittest
 
-
 from devsim.mesh import Mesh
 from devsim.device import Device
 from devsim import materials
+
 
 class SolarCellTestCase(unittest.TestCase):
     def setUp(self):

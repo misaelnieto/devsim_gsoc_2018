@@ -2,7 +2,7 @@ import uuid
 import logging
 
 from ds import *
-from devsim import PhysicalConstants, Environment
+from devsim import PhysicalConstants, AmbientConditions
 
 log = logging.getLogger("Device")
 
@@ -367,7 +367,7 @@ def CreateSolution(device, region, name):
 class Device(object):
     """docstring for Device"""
 
-    __models = None
+    _models = None
 
     def __init__(self, name=None, mesh=None):
         self.name = name or 'device-%s' % str(uuid.uuid4())[:8]
@@ -425,7 +425,7 @@ class Device(object):
         else:
             solve(*args, **kwargs)
 
-        for mdl in self.__models:
+        for mdl in self._models:
             mdl.solve(*args, **kwargs)
 
     def initial_solution(self):
@@ -483,7 +483,7 @@ class Device(object):
                 CreateSiliconDriftDiffusionAtContact(self.name, region.name, c)
 
     def setup_model(self, model):
-        self.__models.append(model)
+        self._models.append(model)
 
     def setup_context(self):
         """
@@ -492,7 +492,7 @@ class Device(object):
         """
         for region in self.mesh.regions:
             PhysicalConstants.set_parameters_for(self.name, region.name)
-            Environment.set_parameters_for(self.name, region.name)
+            AmbientConditions.set_parameters_for(self.name, region.name)
             region.material.set_parameters_for(self.name, region.name)
 
     def export(self, filename, format='devsim_data'):

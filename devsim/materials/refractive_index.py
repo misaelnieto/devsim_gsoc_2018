@@ -2,8 +2,9 @@ import os.path
 import csv
 from numpy import interp as interpolate
 
+from devsim import DS_DATADIR
 
-DATADIR = os.path.join(os.path.dirname(__file__), 'data', 'refractive_indexes')
+DATADIR = os.path.join(DS_DATADIR, 'refractive_indexes')
 
 
 class RefractiveIndex(object):

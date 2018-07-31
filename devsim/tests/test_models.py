@@ -34,7 +34,7 @@ class BeerLambertModelTestCase(unittest.TestCase):
 
         # Stablish conditions (light)
         # Setup the model
-        from devsim.light_sources import AM0
+        from devsim.materials.light_sources import AM0
         from devsim.models import BeerLambertModel
         mdl = BeerLambertModel(sample_device, AM0())
         sample_device.setup_model(mdl)

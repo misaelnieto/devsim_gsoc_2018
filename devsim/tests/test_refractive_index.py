@@ -3,9 +3,10 @@ import unittest
 
 class RefractiveIndexTestCase(unittest.TestCase):
     def test_rindex(self):
+        from devsim.materials.air import Air
         from devsim.materials.refractive_index import RefractiveIndex
 
-        ri_air = RefractiveIndex('Air.csv')
+        ri_air = RefractiveIndex(Air())
         # We know the maximum and minimum wavelength of air datafile
         self.assertEqual(ri_air.lambda_min, 200)
         self.assertEqual(ri_air.lambda_max, 4000)
@@ -39,8 +40,10 @@ class RefractiveIndexTestCase(unittest.TestCase):
         """
         If you iterate over the refractive index you will get the wave length
         """
+        from devsim.materials.air import Air
         from devsim.materials.refractive_index import RefractiveIndex
-        ri_air = RefractiveIndex('Air.csv')
+
+        ri_air = RefractiveIndex(Air())
         self.assertEqual(len(ri_air), 2)
         self.assertEqual(
             [float(l) for l in ri_air],

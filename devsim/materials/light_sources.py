@@ -11,6 +11,7 @@ class AM0(object):
         self.lambda_max = lambda_max
         self._wavelength = []
         self._irradiance = []
+        self._photon_flux = []
 
         data_file = joinpath(DS_DATADIR, 'AM0.csv')
         with open(data_file, newline='') as csvfile:
@@ -22,15 +23,18 @@ class AM0(object):
                 if lambda_min <= wl <= lambda_max:
                     self._wavelength.append(wl)
                     self._irradiance.append(float(row['irradiance']))
+                    self._photon_flux.append(float(row['photon_flux']))
 
         if samples is not None:
             # Probably not the best way? We'll see
             interval = len(self._wavelength) // samples
             self._wavelength = self._wavelength[::interval]
             self._irradiance = self._irradiance[::interval]
+            self._photon_flux = self._photon_flux[::interval]
             if len(self._wavelength) == samples + 1:
                 self._wavelength.pop()
                 self._irradiance.pop()
+                self._photon_flux.pop()
 
     def __len__(self):
         return len(self._wavelength)
@@ -55,4 +59,20 @@ class AM0(object):
             wavelength,
             self._wavelength,
             self._irradiance
+        )
+
+    def photon_flux(self, wavelength):
+        """
+            Returns photon_flux for the given wavelength
+            Units: cm-2 * s-1
+        """
+        if wavelength < self.lambda_min or wavelength > self.lambda_max:
+            return 0.0
+        if wavelength in self._wavelength:
+            ix = self._wavelength.index(wavelength)
+            return self._photon_flux[ix]
+        return interpolate(
+            wavelength,
+            self._wavelength,
+            self._photon_flux
         )

@@ -27,12 +27,19 @@ class ParameterEnum(object):
 
 
 class _PhysicalConstants(ParameterEnum):
-    # Vacuum permittivity or Dielectric constant (F/cm^2)
-    eps_0 = 8.85e-14
+    # Vacuum permittivity or Dielectric constant (F/cm)
+    eps_0 = 8.854_187_817e-14
     # The electron charge (Couloumbs)
-    q = 1.6e-19
-    # Planck's constant (J/K)
-    k = 1.3806503e-23
+    q = 1.602_176_46e-19
+    # Boltzmann constant (J/K)
+    k = 1.380_648_52e-23
+    # Speed of light in vacuum (m/s)
+    c = 299_792_458
+    # The Planck Constant (J*s)
+    h = 6.626_0697e-34
+    # Planck's constant times speed of light (J*m)
+    hc = 1.986_445_683e-25
+
 
 PhysicalConstants = _PhysicalConstants()
 

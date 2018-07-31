@@ -20,7 +20,6 @@ class Material(object):
         return self.name
 
     def set_parameters_for(self, device_name, region_name):
-        from ds import set_parameter
         props = [
             p for p in dir(self)
             if not p.startswith('_') and isinstance(getattr(self, p), MaterialProperty)

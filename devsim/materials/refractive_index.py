@@ -16,13 +16,13 @@ class RefractiveIndex(object):
     _k = None
     _alpha = None
 
-    def __init__(self, datafile):
+    def __init__(self, material):
         self._lambda = []
         self._n = []
         self._k = []
         self._alpha = []
 
-        with open(os.path.join(DATADIR, datafile)) as csvfile:
+        with open(os.path.join(DATADIR, str(material) + '.csv')) as csvfile:
             reader = csv.DictReader(
                 csvfile, fieldnames=('wavelength', 'real', 'imaginary', 'absorption')
             )

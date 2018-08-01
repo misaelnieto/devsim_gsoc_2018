@@ -70,7 +70,7 @@ class RefractiveIndex(object):
 
     def absorption(self, wavelength):
         if wavelength in self._lambda:
-            ix = self._alpha.index(wavelength)
+            ix = self._lambda.index(wavelength)
             return self._alpha[ix]
         return interpolate(
             wavelength,

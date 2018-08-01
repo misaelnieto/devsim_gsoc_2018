@@ -39,6 +39,7 @@ class _PhysicalConstants(ParameterEnum):
     h = 6.626_0697e-34
     # Planck's constant times speed of light (J*m)
     hc = 1.986_445_683e-25
+    hv = hc
 
 
 PhysicalConstants = _PhysicalConstants()

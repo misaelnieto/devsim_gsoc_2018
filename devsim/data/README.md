@@ -8,9 +8,9 @@ Downloaded from [PV Lighthouse](https://www2.pvlighthouse.com.au/resources/optic
 
 **Outputs** Integrated over the range  280–4000 nm:
 
-- **Intensity**: 1348,0434  W/m2
-- **Photon flux** : 6,1445397E+17   cm–2⋅s–1
-- **Photon current** : 98,447815    mA/cm2
+- **Intensity**: 1348,0434  (W/m²)
+- **Photon flux** : 6,1445397E+17   (cm–2⋅s–1)
+- **Photon current** : 98,447815    (mA/cm2)
 
 Columns:
 - Column 1: Wavelength (nm)

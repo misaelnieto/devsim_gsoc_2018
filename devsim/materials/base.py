@@ -28,6 +28,6 @@ class Material(object):
             set_parameter(
                 device=device_name,
                 region=region_name,
-                name=pname, value=getattr(self, pname)
+                name=pname, value=getattr(self, pname).value
             )
 

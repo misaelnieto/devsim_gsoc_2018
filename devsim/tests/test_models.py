@@ -1,6 +1,6 @@
 import unittest
 
-
+from ds import get_node_model_values
 from devsim .mesh import Mesh
 from devsim.device import Device
 from devsim import materials
@@ -42,5 +42,10 @@ class BeerLambertModelTestCase(unittest.TestCase):
         sample_device.solve()
 
         # Check results
+        results = [n for n in get_node_model_values(
+            device=sample_device.name,
+            region=sample_device.mesh.regions[0],
+            name='Beer_Lambert')
+        ]
+        self.assertEqual(len(results), 47)
 
-        self.assertEqual(1, 1)

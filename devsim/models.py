@@ -1,10 +1,10 @@
 import logging
-from ds import *
+from math import exp
+import numpy as np
 
+import ds
 from devsim import PhysicalConstants
 from devsim.materials.refractive_index import RefractiveIndex
-
-log = logging.getLogger("Device")
 
 
 class BeerLambertModel(object):
@@ -14,12 +14,10 @@ class BeerLambertModel(object):
     """
 
     name = 'Beer_Lambert'
+    # TODO:  You have to take the data from the light source and normalize to 1 μm²)
     # phi_0 is the incident photon flux density
-    ##  START HERE!!! You have to take the data from the light source and normalize to 1 μm²)
-    phi_0 = 'P_λ * λ / (hv)'
-    node_equation = '''
-        phi_0 * exp(-alpha * x)
-    '''
+    # phi_0 = 'P_λ * λ / (hv)'
+    node_equation = 'phi_0 * exp(alpha * x)'
 
     def __init__(self, device, light_source):
         self.device = device
@@ -27,43 +25,38 @@ class BeerLambertModel(object):
 
     def solve(self, *args, **kwargs):
         for region in self.device.mesh.regions:
+            print('Computing photogeneration for region: %s' % region)
+            # Assume 1D for now
+            nodes = ds.get_node_model_values(
+                device=self.device.name,
+                region=region,
+                name='x'
+            )
+            pg = np.zeros((len(nodes), len(self.light_source)), dtype=float)
             rfidx = RefractiveIndex(region.material)
-            λ = self.light_source.lambda_min
-            # set_parameter(
-            #     device=self.device.name,
-            #     region=region,
-            #     name="λ",
-            #     value=λ
-            # )
-            # set_parameter(
-            #     device=self.device.name,
-            #     region=region,
-            #     name="P_λ",
-            #     value=self.light_source.photon_flux(λ)
-            # )
-            set_parameter(
-                device=self.device.name,
-                region=region,
-                name="phi_0",
-                value=self.light_source.photon_flux(λ) * λ / PhysicalConstants.hv
-            )
-            set_parameter(
-                device=self.device.name,
-                region=region,
-                name="alpha",
-                value=rfidx.alpha(λ)
-            )
-            result = node_model(
-                device=self.device.name,
-                region=region,
-                name=self.name,
-                equation=self.node_equation
-            )
+            for idx, x in enumerate(nodes):
+                # I know, using unicode names here is asking for trouble
+                # ..., but looks nice ;)
+                for idλ, λ in enumerate(self.light_source):
+                    P = self.light_source.irradiance
+                    α = rfidx.alpha
+                    Φ_0 = P(λ) * λ / PhysicalConstants.hc
+                    η_g = 0.01
+                    x_norm = x * 10e-2
+                    pg[idx, idλ] = η_g * Φ_0 * exp(-α(λ) * x_norm)
 
-            log.debug(
-                'Beer-Lambert model for device "{d}" (region: "{r}"); result: {re}'.format(
-                    d=self.device, r=region, re=result
+            # Total photogeneration for each node
+            # Conditions:
+            #   100% quantum efficiency
+            #   Ignoring reflection
+            pgen_by_node = np.add.reduce(pg, 1)
+            ds.node_solution(device=self.device.name, region=region, name='G_op')
+            for i, v in enumerate(pgen_by_node):
+                ds.set_node_value(
+                    device=self.device.name,
+                    region=region,
+                    name='G_op',
+                    index=i,
+                    value=float(v)
                 )
-            )
-            node_solution(name=self.name, device=self.device.name, region=region)
-            edge_from_node_model(node_model=self.name, device=self.device.name, region=region)
+        ds.solve(type='dc', **kwargs)

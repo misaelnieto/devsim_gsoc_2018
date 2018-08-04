@@ -63,7 +63,7 @@ class AM0(object):
 
     def photon_flux(self, wavelength):
         """
-            Returns photon_flux for the given wavelength
+            Returns the cumulative photon flux for the given wavelength
             Units: cm-2 * s-1
         """
         if wavelength < self.lambda_min or wavelength > self.lambda_max:

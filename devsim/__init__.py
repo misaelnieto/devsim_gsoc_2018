@@ -31,6 +31,7 @@ class _PhysicalConstants(ParameterEnum):
     eps_0 = 8.854_187_817e-14
     # The electron charge (Couloumbs)
     q = 1.602_176_46e-19
+    ElectronCharge = q
     # Boltzmann constant (J/K)
     k = 1.380_648_52e-23
     # Speed of light in vacuum (m/s)
@@ -47,5 +48,14 @@ PhysicalConstants = _PhysicalConstants()
 class _AmbientConditions(ParameterEnum):
     # Ambient temperature (k)
     T = 300
+
+    @property
+    def kT(self):
+        return PhysicalConstants.k * self.T
+
+    @property
+    def V_t(self):
+        return self.kT/PhysicalConstants.q
+
 
 AmbientConditions = _AmbientConditions()

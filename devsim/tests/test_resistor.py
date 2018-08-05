@@ -24,9 +24,9 @@ class ResistorTestCase(unittest.TestCase):
         mesh.finalize()
 
         self.resistor = resistor = Device('Resistor', mesh=mesh)
-        resistor.create_node_model(region_name, 'Acceptors', '1.0e16')
-        resistor.create_node_model(region_name, 'Donors', '1.0e4')
-        resistor.create_node_model(region_name, 'NetDoping', 'Donors-Acceptors')
+        resistor.set_node_model(region_name, 'Acceptors', '1.0e16')
+        resistor.set_node_model(region_name, 'Donors', '1.0e4')
+        resistor.set_node_model(region_name, 'NetDoping', 'Donors-Acceptors')
         resistor.solve()
         resistor.solve(type='dc', absolute_error=1.0, relative_error=1e-10, maximum_iterations=30)
 

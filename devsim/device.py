@@ -393,9 +393,12 @@ class Device(object):
             )
         log.info("{0}\t{1}\t{2}\t{3}\t{4}".format(contact, voltage, e_current, h_current, total_current))
 
-    def create_node_model(self, region, model, expression):
-        result = node_model(device=self.name, region=region, name=model, equation=expression)
-        log.debug("NODEMODEL {d} {r} {m} \"{re}\"".format(d=self.name, r=region, m=model, re=result))
+    def set_node_model(self, region, model, expression):
+        node_model(device=self.name, region=region, name=model, equation=expression)
+        log.debug(
+            'Set node model "{m}" for region{r} in device "{d}"'.format(
+                d=self.name, r=region, m=model)
+        )
 
     def create_solution(self, region, name):
         '''
@@ -429,7 +432,7 @@ class Device(object):
             mdl.solve(*args, **kwargs)
 
     def initial_solution(self):
-        self.setup_context()
+        self.setup_parameters()
         for region in self.mesh.regions:
             # Create Potential, Potential@n0, Potential@n1
             CreateSolution(self.name, region, "Potential")
@@ -451,6 +454,7 @@ class Device(object):
         """
         Creates solution variables
         As well as their entries on each edge
+        TODO: this was replicated
         """
         for region in self.mesh.regions:
             node_solution(name=name, device=self.name, region=region)
@@ -485,7 +489,7 @@ class Device(object):
     def setup_model(self, model):
         self._models.append(model)
 
-    def setup_context(self):
+    def setup_parameters(self):
         """
             Initialize the context for the simulation.
             Region is an instance of the mesh.Region class

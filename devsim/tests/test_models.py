@@ -30,21 +30,29 @@ class BeerLambertModelTestCase(unittest.TestCase):
 
         mesh.finalize()
 
-        sample_device = Device('Sample device', mesh=mesh)
+        class SolarCell(Device):
+            def __init__(self, name=None, mesh=None):
+                super(SolarCell, self).__init__(name, mesh)
+                # This is specific to this device
+                self.set_node_model('Bulk', 'Acceptors', '1.0e16*step(0.5e-5-x)')
+                self.set_node_model('Bulk', 'Donors', '1.0e18*step(x-0.5e-5)')
+                self.set_node_model('Bulk', 'NetDoping', 'Donors-Acceptors')
+
+        scell = SolarCell('MySolarCell', mesh=mesh)
 
         # Stablish conditions (light)
         # Setup the model
         from devsim.materials.light_sources import AM0
         from devsim.models import BeerLambertModel
-        mdl = BeerLambertModel(sample_device, AM0())
-        sample_device.setup_model(mdl)
+        mdl = BeerLambertModel(scell, AM0())
+        scell.setup_model(mdl)
         # Solve
-        sample_device.solve()
+        scell.solve()
 
         # Check results
         results = [n for n in get_node_model_values(
-            device=sample_device.name,
-            region=sample_device.mesh.regions[0],
+            device=scell.name,
+            region=scell.mesh.regions[0],
             name='Beer_Lambert')
         ]
         self.assertEqual(len(results), 47)

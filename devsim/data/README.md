@@ -14,7 +14,7 @@ Downloaded from [PV Lighthouse](https://www2.pvlighthouse.com.au/resources/optic
 
 Columns:
 - Column 1: Wavelength (nm)
-- Colimn 2: Spectral irradiance (W⋅m–2⋅nm–1)
+- Column 2: Spectral irradiance (W⋅m–2⋅nm–1)
 - Column 3: Cumulative photon flux (cm–2⋅s–1)
 
 ## AM1.5d.csv

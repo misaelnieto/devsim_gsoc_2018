@@ -7,7 +7,18 @@ from devsim import PhysicalConstants
 from devsim.materials.refractive_index import RefractiveIndex
 
 
-class BeerLambertModel(object):
+class DevSimModel(object):
+    def create_solution_variable(self, name):
+        """
+        Creates solution variables
+        As well as their entries on each edge
+        """
+        for region in self.device.mesh.regions:
+            ds.node_solution(name=name, device=self.device.name, region=region)
+            ds.edge_from_node_model(node_model=name, device=self.device.name, region=region)
+
+
+class BeerLambertModel(DevSimModel):
     """
     This is the simplest model to calculate absorption in multi-layer/region
     structure. Ignores the reflection in all interfaces.
@@ -22,6 +33,7 @@ class BeerLambertModel(object):
     def __init__(self, device, light_source):
         self.device = device
         self.light_source = light_source
+        self.create_solution_variable('G_op')
 
     def solve(self, *args, **kwargs):
         for region in self.device.mesh.regions:

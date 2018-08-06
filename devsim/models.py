@@ -71,4 +71,7 @@ class BeerLambertModel(DevSimModel):
                     index=i,
                     value=float(v)
                 )
-        ds.solve(type='dc', **kwargs)
+        if 'type' in kwargs:
+            ds.solve(**kwargs)
+        else:
+            ds.solve(type='dc', **kwargs)

@@ -435,7 +435,7 @@ class Device(object):
         self.setup_parameters()
         for region in self.mesh.regions:
             # Create Potential, Potential@n0, Potential@n1
-            CreateSolution(self.name, region, "Potential")
+            self.create_solution(region, "Potential")
 
             # Create potential only physical models
             # TODO: move to materials, relate region with material
@@ -449,6 +449,12 @@ class Device(object):
                 set_parameter(device=self.name, name=self._contact_bias_name(c), value=0.0)
                 # TODO: move to models module
                 CreateSiliconPotentialOnlyContact(self.name, region, c)
+
+    def create_solution(self, region, solution_name):
+        node_solution(name=solution_name, device=self.name, region=region)
+        edge_from_node_model(
+            node_model=solution_name, device=self.name, region=region
+        )
 
     def create_solution_variable(self, name):
         """

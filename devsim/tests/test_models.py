@@ -40,6 +40,7 @@ class BeerLambertModelTestCase(unittest.TestCase):
 
         scell = SolarCell('MySolarCell', mesh=mesh)
 
+        import pdb; pdb.set_trace()
         # Stablish conditions (light)
         # Setup the model
         from devsim.materials.light_sources import AM0
@@ -47,7 +48,9 @@ class BeerLambertModelTestCase(unittest.TestCase):
         mdl = BeerLambertModel(scell, AM0())
         scell.setup_model(mdl)
         # Solve
+        scell.initial_solution()
         scell.solve()
+        scell.export('scell.dat')
 
         # Check results
         results = [n for n in get_node_model_values(

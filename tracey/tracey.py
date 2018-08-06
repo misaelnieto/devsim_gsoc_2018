@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding=utf8
 import sys
+from os.path import abspath, join as joinpath, dirname
 from string import ascii_lowercase
 import gi
 
@@ -12,6 +13,11 @@ from parser import DevsimData
 WINDOW_TITLE = 'Tracey - Devsim structure viewer'
 TRACEY_LOGO = 'tracey.svg'
 COLUMN_TITLES = 'xyz' + ascii_lowercase[:-3][::-1]
+
+HERE = abspath(joinpath(dirname(__file__)))
+
+def resource(filename):
+    return joinpath(HERE, filename)
 
 
 class Workspace(Gtk.Box):
@@ -30,7 +36,7 @@ class Workspace(Gtk.Box):
         self.devices_view.connect('row-activated', self.load_datagrid)
 
         # Background
-        self.background = Gtk.Image.new_from_file(TRACEY_LOGO)
+        self.background = Gtk.Image.new_from_file(resource(TRACEY_LOGO))
 
         # Finally, configure the pane
         self.pane = Gtk.Paned.new(Gtk.Orientation.HORIZONTAL)
@@ -54,26 +60,42 @@ class Workspace(Gtk.Box):
     def load_datagrid(self, tree_widget, tree_path, tree_column):
         if str(tree_path) in self.data_map:
             datum = self.data_map[str(tree_path)]
-            # How many columns do we need?
-            n_columns = len(datum[0])
+            # Do we need columns?
+            if type(datum[0]) is list:
+                n_columns = len(datum[0])
+                # Data Grid
+                model = Gtk.ListStore(*[str] * (n_columns))
+                view = Gtk.TreeView(model)
+                for n in range(n_columns):
+                    renderer = Gtk.CellRendererText()
+                    col = Gtk.TreeViewColumn(str, renderer, text=n)
+                    col.set_title(COLUMN_TITLES[n])
+                    view.append_column(col)
+                self.pane.remove(self.pane.get_child2())
+                scroll = Gtk.ScrolledWindow()
+                scroll.add(view)
+                self.pane.add2(scroll)
 
-            # Data Grid
-            model = Gtk.ListStore(*[str] * (n_columns))
-            view = Gtk.TreeView(model)
-            for n in range(n_columns):
+                # populate model
+                for r in datum:
+                    model.append([str(c) for c in r])
+            else:
+                model = Gtk.ListStore(str)
+                view = Gtk.TreeView(model)
                 renderer = Gtk.CellRendererText()
-                col = Gtk.TreeViewColumn(str, renderer, text=n)
-                col.set_title(COLUMN_TITLES[n])
+                col = Gtk.TreeViewColumn(str, renderer, text=0)
+                col.set_title('')
                 view.append_column(col)
+                self.pane.remove(self.pane.get_child2())
+                scroll = Gtk.ScrolledWindow()
+                scroll.add(view)
+                self.pane.add2(scroll)
+                for r in datum:
+                    model.append([str(r)])
+        else:
             self.pane.remove(self.pane.get_child2())
-            scroll = Gtk.ScrolledWindow()
-            scroll.add(view)
-            self.pane.add2(scroll)
-
-            # populate model
-            for r in datum:
-                model.append([str(c) for c in r])
-            self.show_all()
+            self.pane.add2(self.background)
+        self.show_all()
 
     def register_datamap(self, t_iter, datum):
         self.data_map[
@@ -192,7 +214,7 @@ class TraceyApp(Gtk.Application):
         action.connect("activate", self.on_quit)
         self.add_action(action)
 
-        builder = Gtk.Builder.new_from_string(open('system_menu.ui', 'r').read(), -1)
+        builder = Gtk.Builder.new_from_string(open(resource('system_menu.ui'), 'r').read(), -1)
         self.set_app_menu(builder.get_object("app-menu"))
 
     def do_activate(self):

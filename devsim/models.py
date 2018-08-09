@@ -7,6 +7,52 @@ from devsim import PhysicalConstants
 from devsim.materials.refractive_index import RefractiveIndex
 
 
+def model_exists(device, region, model):
+    """
+    Checks whether this node model is available on any device and region
+    """
+    return model in ds.get_node_model_list(device=device, region=region)
+
+
+def create_solution(device, region, name):
+    """
+        Creates both node and edge solutions.
+    """
+    ds.node_solution(name=name, device=device, region=region)
+    ds.edge_from_node_model(node_model=name, device=device, region=region)
+
+
+def node_derivatives(device, region, model, expression, *args):
+    """
+    Create one or more node derivatives
+    """
+    for v in args:
+        nd_name = "{m}:{v}".format(m=model, v=v)
+        nd_eq = "simplify(diff({e},{v}))".format(e=expression, v=v)
+        node_model(device, region, nd_name, nd_eq)
+
+
+# TODO: Move this to the appropiate place
+def edge_model_derivatives(device, region, model, expression, variable):
+    """
+    Creates edge model derivatives
+    """
+    CreateEdgeModel(
+        device, region,
+        "{m}:{v}@n0".format(m=model, v=variable),
+        "simplify(diff({e}, {v}@n0))".format(e=expression, v=variable)
+    )
+    CreateEdgeModel(
+        device, region,
+        "{m}:{v}@n1".format(m=model, v=variable),
+        "simplify(diff({e}, {v}@n1))".format(e=expression, v=variable)
+    )
+
+
+
+
+
+
 class DevSimModel(object):
     def create_solution_variable(self, name):
         """
@@ -14,9 +60,7 @@ class DevSimModel(object):
         As well as their entries on each edge
         """
         for region in self.device.mesh.regions:
-            ds.node_solution(name=name, device=self.device.name, region=region)
-            ds.edge_from_node_model(node_model=name, device=self.device.name, region=region)
-
+            create_solution(device=self.device.name, region=region, name=name)
 
 class BeerLambertModel(DevSimModel):
     """

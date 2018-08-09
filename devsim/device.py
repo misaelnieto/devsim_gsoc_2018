@@ -239,7 +239,6 @@ def CreateSiliconPotentialOnly(device, region):
 def CreateSiliconPotentialOnlyContact(device, region, contact, is_circuit=False):
     """
     Creates the potential equation at the contact
-    if is_circuit is true, than use node given by GetContactBiasName
     """
     # Means of determining contact charge
     # Same for all contacts
@@ -367,8 +366,6 @@ def CreateSolution(device, region, name):
 class Device(object):
     """docstring for Device"""
 
-    _models = None
-
     def __init__(self, name=None, mesh=None):
         self.name = name or 'device-%s' % str(uuid.uuid4())[:8]
         self.mesh = mesh
@@ -395,41 +392,6 @@ class Device(object):
 
     def set_node_model(self, region, model, expression):
         node_model(device=self.name, region=region, name=model, equation=expression)
-        log.debug(
-            'Set node model "{m}" for region{r} in device "{d}"'.format(
-                d=self.name, r=region, m=model)
-        )
-
-    def create_solution(self, region, name):
-        '''
-        Creates solution variables
-        As well as their entries on each edge
-        '''
-        node_solution(name=name, device=self.name, region=region)
-        edge_from_node_model(node_model=name, device=self.name, region=region)
-
-    def solve(self, *args, **kwargs):
-        if not args and not kwargs:
-            self.initial_solution()
-        elif kwargs.get('type', '') == 'ramp':
-            kwargs['type'] = 'dc'
-            start = kwargs.pop('start')
-            stop = kwargs.pop('stop')
-            step = kwargs.pop('step')
-            contact = kwargs.pop('contact')
-            for v in range(start, stop, step):
-                set_parameter(
-                    device=self.name,
-                    name=self._contact_bias_name(contact),
-                    value=v
-                )
-                solve(**kwargs)
-                self.print_currents()
-        else:
-            solve(*args, **kwargs)
-
-        for mdl in self._models:
-            mdl.solve(*args, **kwargs)
 
     def initial_solution(self):
         self.setup_parameters()
@@ -451,6 +413,10 @@ class Device(object):
                 CreateSiliconPotentialOnlyContact(self.name, region, c)
 
     def create_solution(self, region, solution_name):
+        '''
+        Creates solution variables
+        As well as their entries on each edge
+        '''
         node_solution(name=solution_name, device=self.name, region=region)
         edge_from_node_model(
             node_model=solution_name, device=self.name, region=region
@@ -488,9 +454,8 @@ class Device(object):
             )
 
             # Set up equations
-            CreateSiliconDriftDiffusion(self.name, region.name)
-            for c in self.mesh.contacts:
-                CreateSiliconDriftDiffusionAtContact(self.name, region.name, c)
+            region.material.setup_models(self.name, region.name)
+            region.material.setup_contacts(self.name, region.name, mesh.contacts)
 
     def setup_model(self, model):
         self._models.append(model)
@@ -504,6 +469,29 @@ class Device(object):
             PhysicalConstants.set_parameters_for(self.name, region.name)
             AmbientConditions.set_parameters_for(self.name, region.name)
             region.material.set_parameters_for(self.name, region.name)
+
+    def solve(self, *args, **kwargs):
+        if not args and not kwargs:
+            self.initial_solution()
+        elif kwargs.get('type', '') == 'ramp':
+            kwargs['type'] = 'dc'
+            start = kwargs.pop('start')
+            stop = kwargs.pop('stop')
+            step = kwargs.pop('step')
+            contact = kwargs.pop('contact')
+            for v in range(start, stop, step):
+                set_parameter(
+                    device=self.name,
+                    name=self._contact_bias_name(contact),
+                    value=v
+                )
+                solve(**kwargs)
+                self.print_currents()
+        else:
+            solve(*args, **kwargs)
+
+        for mdl in self._models:
+            mdl.solve(*args, **kwargs)
 
     def export(self, filename, format='devsim_data'):
         write_devices(file=filename, type=format)

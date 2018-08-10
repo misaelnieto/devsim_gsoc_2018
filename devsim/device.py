@@ -97,8 +97,8 @@ def CreateBernoulli(device, region):
 
 def CreateSRH(device, region):
     USRH = "(Electrons*Holes - n_i^2)/(taup*(Electrons + n1) + taun*(Holes + p1))"
-    Gn = "-ElectronCharge * USRH"
-    Gp = "+ElectronCharge * USRH"
+    Gn = "-ElectronCharge * USRH + G_op"
+    Gp = "+ElectronCharge * USRH + G_op"
     CreateNodeModel(device, region, "USRH", USRH)
     CreateNodeModel(device, region, "ElectronGeneration", Gn)
     CreateNodeModel(device, region, "HoleGeneration", Gp)
@@ -429,8 +429,8 @@ class Device(object):
         TODO: this was replicated
         """
         for region in self.mesh.regions:
-            node_solution(name=name, device=self.name, region=region)
-            edge_from_node_model(node_model=name, device=self.name, region=region)
+            node_solution(device=self.name, region=region, name=name)
+            edge_from_node_model(device=self.name, region=region, node_model=name)
 
     def drift_diffusion_initial_solution(self):
         # TODO: move it to somewhere else

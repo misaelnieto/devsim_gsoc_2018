@@ -3,7 +3,7 @@ from devsim.device import Device
 from devsim.materials.light_sources import AM0
 from devsim.mesh import Mesh
 from devsim.models import BeerLambertModel
-from ds import get_node_model_values
+import ds
 
 
 class SolarCell(Device):
@@ -31,7 +31,9 @@ scell = SolarCell()
 # Setup the model
 mdl = BeerLambertModel(scell, AM0(samples=25))
 scell.setup_model(mdl)
+
 # Solve
 scell.initial_solution()
 scell.solve(type="dc", absolute_error=1.0, relative_error=1e-10, maximum_iterations=30)
-scell.export('scell.dat')
+scell.export('scell_data.dat')
+scell.export('scell.dat', format='devsim')

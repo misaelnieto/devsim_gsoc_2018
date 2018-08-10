@@ -49,10 +49,6 @@ def edge_model_derivatives(device, region, model, expression, variable):
     )
 
 
-
-
-
-
 class DevSimModel(object):
     def create_solution_variable(self, name):
         """
@@ -88,6 +84,7 @@ class BeerLambertModel(DevSimModel):
                 region=region,
                 name='x'
             )
+
             pg = np.zeros((len(nodes), len(self.light_source)), dtype=float)
             rfidx = RefractiveIndex(region.material)
             for idx, x in enumerate(nodes):
@@ -106,7 +103,6 @@ class BeerLambertModel(DevSimModel):
             #   100% quantum efficiency
             #   Ignoring reflection
             pgen_by_node = np.add.reduce(pg, 1)
-            ds.node_solution(device=self.device.name, region=region, name='G_op')
             for i, v in enumerate(pgen_by_node):
                 ds.set_node_value(
                     device=self.device.name,

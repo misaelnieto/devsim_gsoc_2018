@@ -7,6 +7,9 @@ from devsim import PhysicalConstants
 from devsim.materials.refractive_index import RefractiveIndex
 
 
+log = logging.getLogger(__name__)
+
+
 def model_exists(device, region, model):
     """
     Checks whether this node model is available on any device and region
@@ -77,7 +80,7 @@ class BeerLambertModel(DevSimModel):
 
     def solve(self, *args, **kwargs):
         for region in self.device.mesh.regions:
-            print('Computing photogeneration for region: %s' % region)
+            log.info('Computing photogeneration for region: %s' % region)
             # Assume 1D for now
             nodes = ds.get_node_model_values(
                 device=self.device.name,

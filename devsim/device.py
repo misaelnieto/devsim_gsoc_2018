@@ -4,7 +4,7 @@ import logging
 from ds import *
 from devsim import PhysicalConstants, AmbientConditions
 
-log = logging.getLogger("Device")
+log = logging.getLogger(__name__)
 
 #TODO: move this to the appropiate place
 contactcharge_node="contactcharge_node"
@@ -15,6 +15,15 @@ celec_model = "(1e-10 + 0.5*abs(NetDoping+(NetDoping^2 + 4 * n_i^2)^(0.5)))"
 chole_model = "(1e-10 + 0.5*abs(-NetDoping+(NetDoping^2 + 4 * n_i^2)^(0.5)))"
 
 
+# TODO: move to contact.py
+def _contact_bias_name(contact):
+    return "{0}_bias".format(contact)
+
+
+# TODO: move to contact.py
+def _contact_nodemodel_name(contact):
+    return "{0}nodemodel".format(contact)
+
 
 # Make sure that the model exists, as well as it's node model
 def EnsureEdgeFromNodeModelExists(device, region, nodemodel):
@@ -22,13 +31,14 @@ def EnsureEdgeFromNodeModelExists(device, region, nodemodel):
     Checks if the edge models exists
     """
     if not InNodeModelList(device, region, nodemodel):
-        raise("{} must exist" % (nodemodel))
+        log.error("Created nodemodel${0}@n0 and ${0}@n1".format(nodemodel))
+        raise('Node model "%" must exist' % nodemodel)
 
     # emlist = get_edge_model_list(device=device, region=region)
     emtest = ("{0}@n0".format(nodemodel) and "{0}@n1".format(nodemodel))
     if not emtest:
-        log.debug("INFO: Creating ${0}@n0 and ${0}@n1".format(nodemodel))
         edge_from_node_model(device=device, region=region, node_model=nodemodel)
+        log.info("Created nodemodel${0}@n0 and ${0}@n1".format(nodemodel))
 
 
 def CreateElectronCurrent(device, region, mu_n):
@@ -49,6 +59,9 @@ def CreateElectronCurrent(device, region, mu_n):
     for i in ("Electrons", "Potential", "Holes"):
         CreateEdgeModelDerivatives(device, region, "ElectronCurrent", Jn, i)
 
+    log.debug('CreateElectronCurrent(device={}, region={}, mu_n={})'.format(device, region, mu_n))
+
+
 def CreateHoleCurrent(device, region, mu_p):
     """
     Hole current
@@ -66,6 +79,8 @@ def CreateHoleCurrent(device, region, mu_p):
     for i in ("Holes", "Potential", "Electrons"):
         CreateEdgeModelDerivatives(device, region, "HoleCurrent", Jp, i)
 
+    log.debug('CreateHoleCurrent(device={}, region={}, mu_n={})'.format(device, region, mu_p))
+
 
 def CreatePE(device, region):
     pne = "-ElectronCharge*kahan3(Holes, -Electrons, NetDoping)"
@@ -78,6 +93,8 @@ def CreatePE(device, region):
         name="PotentialEquation", variable_name="Potential",
         node_model="PotentialNodeCharge", edge_model="PotentialEdgeFlux",
         time_node_model="", variable_update="log_damp")
+
+    log.debug('CreatePE(device={}, region={}'.format(device, region))
 
 
 def CreateBernoulli(device, region):
@@ -94,11 +111,15 @@ def CreateBernoulli(device, region):
     CreateEdgeModel(device, region, "Bern01:Potential@n0", "dBdx(vdiff) * vdiff:Potential@n0")
     CreateEdgeModel(device, region, "Bern01:Potential@n1", "-Bern01:Potential@n0")
 
+    log.debug('CreateBernoulli(device={}, region={})'.format(device, region))
+
 
 def CreateSRH(device, region):
     USRH = "(Electrons*Holes - n_i^2)/(taup*(Electrons + n1) + taun*(Holes + p1))"
-    Gn = "-ElectronCharge * USRH + G_op"
-    Gp = "+ElectronCharge * USRH + G_op"
+    # Gn = "-ElectronCharge * USRH + G_op"
+    # Gp = "+ElectronCharge * USRH + G_op"
+    Gn = "-ElectronCharge * USRH"
+    Gp = "+ElectronCharge * USRH"
     CreateNodeModel(device, region, "USRH", USRH)
     CreateNodeModel(device, region, "ElectronGeneration", Gn)
     CreateNodeModel(device, region, "HoleGeneration", Gp)
@@ -106,6 +127,8 @@ def CreateSRH(device, region):
         CreateNodeModelDerivative(device, region, "USRH", USRH, i)
         CreateNodeModelDerivative(device, region, "ElectronGeneration", Gn, i)
         CreateNodeModelDerivative(device, region, "HoleGeneration", Gp, i)
+
+    log.debug('CreateSRH(device={}, region={})'.format(device, region))
 
 
 def CreateECE(device, region, mu_n):
@@ -122,6 +145,8 @@ def CreateECE(device, region, mu_n):
         edge_model="ElectronCurrent", variable_update="positive", node_model="ElectronGeneration"
     )
 
+    log.debug('CreateECE(device={}, region={})'.format(device, region))
+
 
 def CreateHCE(device, region, mu_p):
     CreateHoleCurrent(device, region, mu_p)
@@ -137,19 +162,21 @@ def CreateHCE(device, region, mu_p):
         node_model="HoleGeneration"
     )
 
+    log.debug('CreateHCE(device={}, region={})'.format(device, region))
+
 
 # TODO: Move this to the appropiate place
 def CreateNodeModel(device, region, model, expression):
     """
         Creates a node model
     """
-    result = node_model(
+    node_model(
         device=device,
         region=region,
         name=model,
         equation=expression
     )
-    log.debug("NODEMODEL {d} {r} {m} \"{re}\"".format(d=device, r=region, m=model, re=result))
+    log.debug('CreateNodeModel(device={}, region={},name={})'.format(device, region, model))
 
 
 # TODO: Move this to the appropiate place
@@ -173,8 +200,8 @@ def CreateEdgeModel(device, region, model, expression):
     """
     Creates an edge model
     """
-    result = edge_model(device=device, region=region, name=model, equation=expression)
-    log.debug("EDGEMODEL {d} {r} {m} \"{re}\"".format(d=device, r=region, m=model, re=result))
+    edge_model(device=device, region=region, name=model, equation=expression)
+    log.debug("CreateEdgeModel(device={d}, region={r}, model={m})".format(d=device, r=region, m=model))
 
 
 # TODO: Move this to the appropiate place
@@ -194,8 +221,8 @@ def CreateContactNodeModel(device, contact, model, expression):
     """
     Creates a contact node model
     """
-    result = contact_node_model(device=device, contact=contact, name=model, equation=expression)
-    log.debug("CONTACTNODEMODEL {d} {c} {m} \"{re}\"".format(d=device, c=contact, m=model, re=result))
+    contact_node_model(device=device, contact=contact, name=model, equation=expression)
+    log.debug("CreateContactNodeModel(device={d}, contact={c}, model={m})".format(d=device, c=contact, m=model))
 
 
 # TODO: Move this to the appropiate place
@@ -204,7 +231,6 @@ def CreateSiliconPotentialOnly(device, region):
         Creates the physical models for a Silicon region
     """
     if not InNodeModelList(device, region, "Potential"):
-        log("Creating Node Solution Potential")
         CreateSolution(device, region, "Potential")
     # require NetDoping
     intrinsics = (
@@ -234,6 +260,8 @@ def CreateSiliconPotentialOnly(device, region):
         variable_update="log_damp"
     )
 
+    log.debug('CreateECE(device={}, region={})'.format(device, region))
+
 
 # TODO: Move this to the appropiate place
 def CreateSiliconPotentialOnlyContact(device, region, contact, is_circuit=False):
@@ -248,6 +276,42 @@ def CreateSiliconPotentialOnlyContact(device, region, contact, is_circuit=False)
     if not InEdgeModelList(device, region, "contactcharge_edge"):
         CreateEdgeModel(device, region, "contactcharge_edge", "Permittivity*ElectricField")
         CreateEdgeModelDerivatives(device, region, "contactcharge_edge", "Permittivity*ElectricField", "Potential")
+
+    contact_model = 'Potential -{0} + ifelse(NetDoping > 0, -V_t*log({1}/n_i), V_t*log({2}/n_i))'.format(
+        _contact_bias_name(contact), celec_model, chole_model
+    )
+
+    contact_model_name = _contact_nodemodel_name(contact)
+    CreateContactNodeModel(device, contact, contact_model_name, contact_model)
+    # Simplify it too complicated
+    CreateContactNodeModel(device, contact, "{0}:{1}".format(contact_model_name,"Potential"), "1")
+    if is_circuit:
+        CreateContactNodeModel(device, contact, "{0}:{1}".format(contact_model_name,_contact_bias_name(contact)), "-1")
+
+    if is_circuit:
+        contact_equation(
+            device=device, contact=contact, name="PotentialEquation",
+            variable_name="Potential",
+            node_model=contact_model_name, edge_model="",
+            node_charge_model="contactcharge_node", 
+            edge_charge_model="contactcharge_edge",
+            node_current_model="", edge_current_model="",
+            circuit_node=_contact_bias_name(contact)
+        )
+    else:
+        contact_equation(
+            device=device, contact=contact, name="PotentialEquation",
+            variable_name="Potential",
+            node_model=contact_model_name, edge_model="",
+            node_charge_model="contactcharge_node", 
+            edge_charge_model="contactcharge_edge",
+            node_current_model="", edge_current_model=""
+        )
+
+    log.debug(
+        'CreateSiliconPotentialOnlyContact(device={}, region={}, contact={}, is_circuit={})'
+        .format(device, region, contact, is_circuit)
+    )
 
 
 # TODO: Move this to the appropiate place
@@ -287,7 +351,7 @@ def CreateSiliconDriftDiffusionAtContact(device, region, contact, is_circuit=Fal
             variable_name="Electrons",
             node_model=contact_electrons_name,
             edge_current_model="ElectronCurrent",
-            circuit_node=GetContactBiasName(contact)
+            circuit_node=_contact_bias_name(contact)
         )
 
         contact_equation(
@@ -297,7 +361,7 @@ def CreateSiliconDriftDiffusionAtContact(device, region, contact, is_circuit=Fal
             variable_name="Holes",
             node_model=contact_holes_name,
             edge_current_model="HoleCurrent",
-            circuit_node=GetContactBiasName(contact)
+            circuit_node=_contact_bias_name(contact)
         )
     else:
         contact_equation(
@@ -315,6 +379,11 @@ def CreateSiliconDriftDiffusionAtContact(device, region, contact, is_circuit=Fal
             variable_name="Holes",
             node_model=contact_holes_name,
             edge_current_model="HoleCurrent")
+
+    log.debug(
+        'CreateSiliconDriftDiffusionAtContact(device={}, region={}, contact={}, is_circuit={})'
+        .format(device, region, contact, is_circuit)
+    )
 
 
 # TODO: Move this to the appropiate place
@@ -372,45 +441,42 @@ class Device(object):
         create_device(mesh=self.mesh.name, device=self.name)
         self._models = []
 
-    def _contact_bias_name(self, contact):
-        return "{0}_bias".format(contact)
-
     def print_currents(self):
         for c in self.mesh.contacts:
             e_current = get_contact_current(
-                device=device, contact=c, equation='ElectronContinuityEquation'
+                device=self.name, contact=c, equation='ElectronContinuityEquation'
             )
             h_current = get_contact_current(
-                device=device, contact=c, equation='HoleContinuityEquation'
+                device=self.name, contact=c, equation='HoleContinuityEquation'
             )
             total_current = e_current + h_current
             voltage = get_parameter(
-                device=device,
-                name=self._contact_bias_name(contact)
+                device=self.name,
+                name=_contact_bias_name(c)
             )
-        log.info("{0}\t{1}\t{2}\t{3}\t{4}".format(contact, voltage, e_current, h_current, total_current))
+            print("{0}\t{1}\t{2}\t{3}\t{4}".format(c, voltage, e_current, h_current, total_current))
 
     def set_node_model(self, region, model, expression):
         node_model(device=self.name, region=region, name=model, equation=expression)
 
-    def initial_solution(self):
+    def initial_solution(self, region):
         self.setup_parameters()
-        for region in self.mesh.regions:
-            # Create Potential, Potential@n0, Potential@n1
-            self.create_solution(region, "Potential")
+        # Create Potential, Potential@n0, Potential@n1
+        self.create_solution(region, "Potential")
 
-            # Create potential only physical models
-            # TODO: move to materials, relate region with material
-            CreateSiliconPotentialOnly(self.name, region)
+        # Create potential only physical models
+        # TODO: move to materials, relate region with material
+        CreateSiliconPotentialOnly(self.name, region)
 
-            # Set up the contacts applying a bias
-            # TODO: Try to use self.contacts instead it is more correct for
-            # the bias to be 0, and it looks like there are side effects
+        # Set up the contacts applying a bias
+        # TODO: Try to use self.contacts instead it is more correct for
+        # the bias to be 0, and it looks like there are side effects
+        # DriftDiffusionInitialSolution(self.name, region)
 
-            for c in self.mesh.contacts:
-                set_parameter(device=self.name, name=self._contact_bias_name(c), value=0.0)
-                # TODO: move to models module
-                CreateSiliconPotentialOnlyContact(self.name, region, c)
+        for c in self.mesh.contacts:
+            set_parameter(device=self.name, name=_contact_bias_name(c), value=0.0)
+            # TODO: move to models module
+            CreateSiliconPotentialOnlyContact(self.name, region, c)
 
     def create_solution(self, region, solution_name):
         '''
@@ -482,7 +548,7 @@ class Device(object):
             for v in range(start, stop, step):
                 set_parameter(
                     device=self.name,
-                    name=self._contact_bias_name(contact),
+                    name=_contact_bias_name(contact),
                     value=v
                 )
                 solve(**kwargs)

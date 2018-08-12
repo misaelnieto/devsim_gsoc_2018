@@ -5,7 +5,7 @@ from devsim import models as ds_models
 from devsim import PhysicalConstants
 from .base import Material, MaterialProperty
 
-log = logging.getLogger('Material (Silicon)')
+log = logging.getLogger(__name__)
 
 
 class Silicon(Material):

@@ -28,9 +28,17 @@ class Mesh(object):
 
     """
 
-    def __init__(self, name=None):
+    def __init__(self, name=None, dimension='1D'):
         self.name = name or 'mesh-%s' % str(uuid.uuid4())[:8]
-        create_1d_mesh(mesh=self.name)
+        if dimension == '1D':
+            create_1d_mesh(mesh=self.name)
+        elif dimension == '2D':
+            create_2d_mesh(mesh=self.name)
+        elif dimension == '3D':
+            create_3d_mesh(mesh=self.name)
+        else:
+            raise('Wrong dimension type: {}'.format(dimension))
+
         self.contacts = []
         self.regions = []
 
@@ -108,12 +116,38 @@ class Mesh(object):
         )
         """
         # Use the material class name as material name parameter to add_1d_region?
-        _mat = isinstance(material, enum.Enum) and material.__name__ or material.__class__.__name__
         add_1d_region(
-            mesh=self.name, material=str(_mat), region=name, tag1=tag1, tag2=tag2
+            mesh=self.name, material=str(material), region=name, tag1=tag1, tag2=tag2
         )
         # Maybe add name, material as tuple?
         self.regions.append(Region(name, material))
+
+    def add_2d_line(self, direction, position, spacing, scale=1e-6):
+        add_2d_mesh_line(
+            mesh=self.name,
+            dir=direction,
+            pos=position * scale,
+            ps=spacing * scale
+        )
+
+    def add_2d_contact(self, name, material, region, **kwargs):
+        """
+        Add a 2D contact to this mesh
+        """
+        # add_2d_contact(mesh="dio", name="top", material="metal", region=region, yl=0.8e-5, yh=1e-5, xl=0, xh=0, bloat=1e-10)
+
+        self.contacts.append(name)
+        add_2d_contact(
+            mesh=self.name,
+            name=name,
+            material=str(material),
+            region=region,
+            **kwargs
+        )
+
+    def add_2d_region(self, name, material, **kwargs):
+        self.regions.append(Region(name, material))
+        add_2d_region(mesh=self.name, material=str(material), region=name, **kwargs)
 
     def finalize(self):
         """

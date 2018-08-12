@@ -30,6 +30,6 @@ class Material(object):
                 region=region_name,
                 name=pname, value=getattr(self, pname).value
             )
-            log.info('set_parameter(device={}, region={}, name={}, value={})'.format(
+            log.debug('set_parameter(device={}, region={}, name={}, value={})'.format(
                 device_name, region_name, pname, getattr(self, pname).value))
 

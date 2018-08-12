@@ -1,5 +1,7 @@
+import logging
 from ds import set_parameter
 
+log = logging.getLogger(__name__)
 
 class MaterialProperty(object):
     def __init__(self, value):
@@ -8,13 +10,11 @@ class MaterialProperty(object):
 
 class Material(object):
     name = 'isolator'
-    __parameters = None
 
     def __init__(self, **kwargs):
         self.__parameters = []
         for name, value in kwargs.items():
-            setattr(self, name, value)
-            self.__parameters.append(name)
+            setattr(self, name, MaterialProperty(value))
 
     def __repr__(self):
         return self.name
@@ -30,4 +30,6 @@ class Material(object):
                 region=region_name,
                 name=pname, value=getattr(self, pname).value
             )
+            log.info('set_parameter(device={}, region={}, name={}, value={})'.format(
+                device_name, region_name, pname, getattr(self, pname).value))
 

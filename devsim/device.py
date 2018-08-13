@@ -116,10 +116,10 @@ def CreateBernoulli(device, region):
 
 def CreateSRH(device, region):
     USRH = "(Electrons*Holes - n_i^2)/(taup*(Electrons + n1) + taun*(Holes + p1))"
-    # Gn = "-ElectronCharge * USRH + G_op"
-    # Gp = "+ElectronCharge * USRH + G_op"
-    Gn = "-ElectronCharge * USRH"
-    Gp = "+ElectronCharge * USRH"
+    Gn = "-ElectronCharge * (USRH + G_op)"
+    Gp = "+ElectronCharge * (USRH + G_op)"
+    # Gn = "-ElectronCharge * USRH"
+    # Gp = "+ElectronCharge * USRH"
     CreateNodeModel(device, region, "USRH", USRH)
     CreateNodeModel(device, region, "ElectronGeneration", Gn)
     CreateNodeModel(device, region, "HoleGeneration", Gp)
@@ -442,6 +442,9 @@ class Device(object):
         self._models = []
 
     def print_currents(self):
+        print('='*80)
+        print('Contact |\tVoltage |\tCurrent(e) |\tCurrent(h) |\tTotal current')
+        print('-'*80)
         for c in self.mesh.contacts:
             e_current = get_contact_current(
                 device=self.name, contact=c, equation='ElectronContinuityEquation'
@@ -454,7 +457,7 @@ class Device(object):
                 device=self.name,
                 name=_contact_bias_name(c)
             )
-            print("{0}\t{1}\t{2}\t{3}\t{4}".format(c, voltage, e_current, h_current, total_current))
+            print("{0}\t|{1:4}\t|{2}\t|{3}\t|{4}".format(c, voltage, e_current, h_current, total_current))
 
     def set_node_model(self, region, model, expression):
         node_model(device=self.name, region=region, name=model, equation=expression)

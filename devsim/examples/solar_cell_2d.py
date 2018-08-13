@@ -41,7 +41,7 @@ class SolarCell(Device):
         super(SolarCell, self).__init__('MyDevice', mesh)
 
         # This is specific to this device
-        self.set_node_model('MyRegion', 'Acceptors', '1.0e18*step(0.5e-5-x)')
+        self.set_node_model('MyRegion', 'Acceptors', '1.0e16*step(0.5e-5-x)')
         self.set_node_model('MyRegion', 'Donors', '1.0e18*step(x-0.5e-5)')
         self.set_node_model('MyRegion', 'NetDoping', 'Donors-Acceptors')
 
@@ -49,8 +49,8 @@ scell = SolarCell()
 
 # Stablish conditions (light)
 # Setup the model
-# mdl = BeerLambertModel(scell, AM0(samples=25))
-# scell.setup_model(mdl)
+mdl = BeerLambertModel(scell, AM0(samples=25))
+scell.setup_model(mdl)
 
 # Solve Drift diffusion @ equilibrium
 scell.initial_solution(region='MyRegion')

@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='devsim',
-    packages=['devsim', 'tracey'],
+    packages=['devsim'],
     version='0.0.1',
     description='DEVSIM TCAD Simulator',
     url='https://devsim.org',

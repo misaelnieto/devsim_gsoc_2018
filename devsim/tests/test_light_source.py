@@ -7,18 +7,26 @@ class LightsourceTestCase(unittest.TestCase):
         src = AM0()
         self.assertEqual(src.lambda_min, 280)
         self.assertEqual(src.lambda_max, 4000)
-        self.assertEqual(src.irradiance(280), 8.2e-2)
-        self.assertEqual(src.irradiance(4000), 8.68e-3)
+        self.assertEqual(src.irradiance(280), 8.2E-2)
+        self.assertEqual(src.irradiance(4000), 8.68E-3)
         self.assertEqual(src.photon_flux(280), 2.887_797_5E+12)
-        self.assertEqual(src.photon_flux(4000), 6.144_539_7E+17)
+        self.assertEqual(src.photon_flux(280.5), 6.985_426_2E12)
+        self.assertEqual(src.photon_flux(1160), 3.087_2E+14)
+        self.assertEqual(src.photon_flux(4000), 4.367E+13)
+        self.assertEqual(src.acc_photon_flux(280), 2.887_797_5E+12)
+        self.assertEqual(src.acc_photon_flux(4000), 6.144_539_7E+17)
 
     def test_am0_interpolation(self):
         from devsim.materials.light_sources import AM0
         src = AM0()
-        self.assertEqual(src.irradiance(280.75), 0.1245)
-        self.assertEqual(src.irradiance(3926.25), 0.00938)
-        self.assertEqual(src.photon_flux(280.75), 1.517464635E+13)
-        self.assertEqual(src.photon_flux(3997.50), 6.14432135e+17)
+        self.assertEqual(src.irradiance(280.75), 0.124_5)
+        self.assertEqual(src.irradiance(3926.25), 0.009_38)
+        self.assertEqual(src.photon_flux(280.5), 6.985_426_2E+12)
+        self.assertEqual(src.photon_flux(280.75), 8.794_135_75E+12)
+        self.assertEqual(src.photon_flux(281.0), 1.060_284_53E+13)
+        self.assertEqual(src.photon_flux(3997.50), 6.555000E+13)
+        self.assertEqual(src.acc_photon_flux(280.75), 1.517464635E+13)
+        self.assertEqual(src.acc_photon_flux(3997.50), 6.14432135E+17)
 
     def test_am0_windowing(self):
         from devsim.materials.light_sources import AM0
@@ -32,9 +40,14 @@ class LightsourceTestCase(unittest.TestCase):
         self.assertEqual(src.irradiance(1001), 0.0)
         self.assertEqual(src.photon_flux(0), 0.0)
         self.assertEqual(src.photon_flux(499), 0.0)
-        self.assertEqual(src.photon_flux(500), 6.0745581e+16)
-        self.assertEqual(src.photon_flux(1000), 2.9414051e+17)
+        self.assertEqual(src.photon_flux(500), 4.829760E+14)
+        self.assertEqual(src.photon_flux(1000), 3.738000E+14)
         self.assertEqual(src.photon_flux(1001), 0.0)
+        self.assertEqual(src.acc_photon_flux(0), 0.0)
+        self.assertEqual(src.acc_photon_flux(499), 0.0)
+        self.assertEqual(src.acc_photon_flux(500), 6.0745581E+16)
+        self.assertEqual(src.acc_photon_flux(1000), 2.9414051E+17)
+        self.assertEqual(src.acc_photon_flux(1001), 0.0)
 
     def test_am0_subsambpling(self):
         from devsim.materials.light_sources import AM0

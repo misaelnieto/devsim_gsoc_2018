@@ -23,8 +23,8 @@ class SolarCell(Device):
         # Define mesh (default units are micrometers)
         mesh = Mesh()
         mesh.add_line(0.0, 0.1, 'top')
-        mesh.add_line(50, 0.01, 'mid')
-        mesh.add_line(100, 0.1, 'bottom')
+        mesh.add_line(5, 1, 'mid')
+        mesh.add_line(100, 1, 'bottom')
         mesh.add_contact(name='top', tag='top', material=materials.Metals.generic)
         mesh.add_contact(name='bottom', tag='bottom', material=materials.Metals.generic)
         Si = materials.Silicon(taun=1e-8, taup=1e-8)
@@ -45,7 +45,7 @@ mdl = BeerLambertModel(scell, AM0(samples=25))
 scell.setup_model(mdl)
 
 # Solve Drift diffusion @ equilibrium
-scell.initial_solution()
+scell.initial_solution('MyRegion')
 scell.solve(type="dc", absolute_error=1.0, relative_error=1e-12, maximum_iterations=30)
 
 scell.export('scell_data_01.dat')

@@ -47,7 +47,7 @@ class BeerLambertModelTestCase(unittest.TestCase):
         mdl = BeerLambertModel(scell, AM0(samples=25))
         scell.setup_model(mdl)
         # Solve
-        scell.initial_solution()
+        scell.initial_solution('Bulk')
         scell.solve(type="dc", absolute_error=1.0, relative_error=1e-10, maximum_iterations=30)
         scell.export('scell.dat')
 

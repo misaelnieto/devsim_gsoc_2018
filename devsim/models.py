@@ -61,6 +61,7 @@ class DevSimModel(object):
         for region in self.device.mesh.regions:
             create_solution(device=self.device.name, region=region, name=name)
 
+
 class BeerLambertModel(DevSimModel):
     """
     This is the simplest model to calculate absorption in multi-layer/region
@@ -90,16 +91,31 @@ class BeerLambertModel(DevSimModel):
 
             pg = np.zeros((len(nodes), len(self.light_source)), dtype=float)
             rfidx = RefractiveIndex(region.material)
-            for idx, x in enumerate(nodes):
+            for idλ, λ in enumerate(self.light_source):
                 # I know, using unicode names here is asking for trouble
-                # ..., but looks nice ;)
-                for idλ, λ in enumerate(self.light_source):
-                    P = self.light_source.irradiance
-                    α = rfidx.alpha
-                    Φ_0 = P(λ) * λ / PhysicalConstants.hc
-                    η_g = 0.01
-                    x_norm = x * 10e-2
-                    pg[idx, idλ] = η_g * Φ_0 * exp(-α(λ) * x_norm)
+                # ... but looks nice when using greek letters
+                # TODO: compute the real reflection
+                R = 0
+                # λ is nm, but irradiance's units are W⋅m–2⋅nm–1
+                P = self.light_source.irradiance(λ)
+                Φ_0 = (P * λ * 1e-9 / PhysicalConstants.hc) * (1 - R)
+                # α(λ)'s units are cm-1. But we use m
+                α = rfidx.alpha(λ) * 1e+2
+                # TODO: do not assume conversion efficiency is 100% (1 photon = 1EHP by now)
+                η_g = 1.0
+
+                # Debug
+                print('\n' + '-'*70)
+                print('Photogeneration dump. Parameters:')
+                print('λ={:.2f} nm; P(λ)={:.2f}; Φ_0(λ)={:8.2e} m-2 s-1; α(λ)={:8.2e} m-1'.format(λ, P, Φ_0, α))
+                print('-'*24)
+                print('   x(μm)  |  G_op(x, λ)')
+                print('-'*24)
+                for idx, x in enumerate(nodes):
+                    pg[idx, idλ] = η_g  * Φ_0 * exp(-α * x)
+                    print('{:8.2f}  | {:8.2e}'.format(
+                        x * 1e6, pg[idx, idλ]
+                    ))
 
             # Total photogeneration for each node
             # Conditions:

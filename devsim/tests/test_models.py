@@ -55,7 +55,7 @@ class BeerLambertModelTestCase(unittest.TestCase):
         results = [n for n in get_node_model_values(
             device=scell.name,
             region=scell.mesh.regions[0],
-            name='Beer_Lambert')
+            name='G_op')
         ]
         self.assertEqual(len(results), 47)
 
